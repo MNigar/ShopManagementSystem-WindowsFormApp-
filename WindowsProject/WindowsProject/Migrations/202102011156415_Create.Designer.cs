@@ -7,13 +7,13 @@ namespace WindowsProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class CreateDb : IMigrationMetadata
+    public sealed partial class Create : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateDb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Create));
         
         string IMigrationMetadata.Id
         {
-            get { return "202101311617410_CreateDb"; }
+            get { return "202102011156415_Create"; }
         }
         
         string IMigrationMetadata.Source

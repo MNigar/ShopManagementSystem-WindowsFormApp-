@@ -9,7 +9,7 @@ namespace WindowsProject.DAL
 {
     public  interface Idb
     {
-        IEnumerable<User> GetAll();
+        List<User> GetAll();
         User GetById(int id);
         void Insert(User item);
         void Update(User item);

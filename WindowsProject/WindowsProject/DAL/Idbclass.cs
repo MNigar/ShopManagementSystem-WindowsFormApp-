@@ -21,9 +21,14 @@ namespace WindowsProject.DAL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<User> GetAll()
+        public List<User> GetAll()
         {
-            throw new NotImplementedException();
+            using (ShopManagementContext context = new ShopManagementContext())
+            {
+
+                return context.Users.ToList() ;
+            }
+
         }
 
         public User GetById(int id)
@@ -41,7 +46,16 @@ namespace WindowsProject.DAL
             }
           
         }
-
+        public bool IfExist(string email, string password, List<User> users)
+        {
+            bool result = false;
+            if (users.Any(user => user.Email.ToLower() == email.ToLower()
+            && user.Password.ToLower() == password.ToLower()))
+            {
+                result = true;
+            }
+            return result;
+        }
         public void Save()
         {
             throw new NotImplementedException();
