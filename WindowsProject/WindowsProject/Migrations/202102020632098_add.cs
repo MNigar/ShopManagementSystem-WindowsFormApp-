@@ -33,12 +33,43 @@
                 .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
                 .Index(t => t.CategoryId);
             
+            CreateTable(
+                "dbo.Roles",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Users",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Surname = c.String(),
+                        Email = c.String(),
+                        Phone = c.String(),
+                        Password = c.String(),
+                        CreatedDate = c.DateTime(nullable: false),
+                        Status = c.Int(nullable: false),
+                        RoleId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Roles", t => t.RoleId, cascadeDelete: true)
+                .Index(t => t.RoleId);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Users", "RoleId", "dbo.Roles");
             DropForeignKey("dbo.Products", "CategoryId", "dbo.Categories");
+            DropIndex("dbo.Users", new[] { "RoleId" });
             DropIndex("dbo.Products", new[] { "CategoryId" });
+            DropTable("dbo.Users");
+            DropTable("dbo.Roles");
             DropTable("dbo.Products");
             DropTable("dbo.Categories");
         }

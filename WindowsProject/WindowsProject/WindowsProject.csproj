@@ -56,9 +56,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CategoryForm.Designer.cs">
+      <DependentUpon>CategoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DALnew\IRepositorry.cs" />
     <Compile Include="DALnew\Repository.cs" />
+    <Compile Include="DAL\Categoryclass.cs" />
     <Compile Include="DAL\Dbclass.cs" />
+    <Compile Include="DAL\ICategory.cs" />
     <Compile Include="DAL\Idb.cs" />
     <Compile Include="DAL\Idbclass.cs" />
     <Compile Include="DAL\IShopManagementrepository.cs" />
@@ -70,17 +78,9 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102011156415_Create.cs" />
-    <Compile Include="Migrations\202102011156415_Create.designer.cs">
-      <DependentUpon>202102011156415_Create.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102011201237_update.cs" />
-    <Compile Include="Migrations\202102011201237_update.designer.cs">
-      <DependentUpon>202102011201237_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102011341227_add.cs" />
-    <Compile Include="Migrations\202102011341227_add.designer.cs">
-      <DependentUpon>202102011341227_add.cs</DependentUpon>
+    <Compile Include="Migrations\202102020632098_add.cs" />
+    <Compile Include="Migrations\202102020632098_add.designer.cs">
+      <DependentUpon>202102020632098_add.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -95,17 +95,14 @@
     <Compile Include="RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CategoryForm.resx">
+      <DependentUpon>CategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102011156415_Create.resx">
-      <DependentUpon>202102011156415_Create.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102011201237_update.resx">
-      <DependentUpon>202102011201237_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102011341227_add.resx">
-      <DependentUpon>202102011341227_add.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102020632098_add.resx">
+      <DependentUpon>202102020632098_add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

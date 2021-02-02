@@ -36,7 +36,7 @@ namespace WindowsProject
             
         }
         Idbclass dbclass = new Idbclass();
-
+        LoginForm login = new LoginForm();
         private void btn_Registration_Click(object sender, EventArgs e)
            
         {
@@ -63,13 +63,14 @@ namespace WindowsProject
                && !string.IsNullOrEmpty(txb_Password.Text) && txb_Password.Text.Length > 8)
                 {
                     dbclass.Insert(user);
+                    login.Show();
+                    
                 }
                 else
                 {
                     MessageBox.Show("Yalnish");
                 }
-                _loginForm.Show();
-                this.Close();
+                
 
             }
         }
@@ -81,7 +82,7 @@ namespace WindowsProject
 
         private void lbl_Login_Click(object sender, EventArgs e)
         {
-            LoginForm login = new LoginForm();
+            
             login.Show();
         }
     }
