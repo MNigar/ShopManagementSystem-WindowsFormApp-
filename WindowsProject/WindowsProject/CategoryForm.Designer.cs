@@ -37,10 +37,16 @@ namespace WindowsProject
             this.txb_Name = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgw_Table = new System.Windows.Forms.DataGridView();
+            this.grb_CategoryEdit = new System.Windows.Forms.GroupBox();
+            this.btn_Update = new System.Windows.Forms.Button();
+            this.lbl_UpdateName = new System.Windows.Forms.Label();
+            this.txb_UpdateName = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tbc_Product.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grb_Categoriya.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_Table)).BeginInit();
+            this.grb_CategoryEdit.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbc_Product
@@ -50,20 +56,23 @@ namespace WindowsProject
             this.tbc_Product.Location = new System.Drawing.Point(84, 24);
             this.tbc_Product.Name = "tbc_Product";
             this.tbc_Product.SelectedIndex = 0;
-            this.tbc_Product.Size = new System.Drawing.Size(893, 509);
+            this.tbc_Product.Size = new System.Drawing.Size(1141, 519);
             this.tbc_Product.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.grb_CategoryEdit);
             this.tabPage1.Controls.Add(this.dgw_Table);
             this.tabPage1.Controls.Add(this.grb_Categoriya);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(885, 476);
+            this.tabPage1.Size = new System.Drawing.Size(1133, 486);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // grb_Categoriya
             // 
@@ -72,7 +81,7 @@ namespace WindowsProject
             this.grb_Categoriya.Controls.Add(this.txb_Name);
             this.grb_Categoriya.Location = new System.Drawing.Point(36, 260);
             this.grb_Categoriya.Name = "grb_Categoriya";
-            this.grb_Categoriya.Size = new System.Drawing.Size(554, 184);
+            this.grb_Categoriya.Size = new System.Drawing.Size(464, 184);
             this.grb_Categoriya.TabIndex = 3;
             this.grb_Categoriya.TabStop = false;
             this.grb_Categoriya.Text = "Kateqoriya";
@@ -116,12 +125,61 @@ namespace WindowsProject
             // dgw_Table
             // 
             this.dgw_Table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgw_Table.Location = new System.Drawing.Point(237, 15);
+            this.dgw_Table.Location = new System.Drawing.Point(36, 23);
             this.dgw_Table.Name = "dgw_Table";
             this.dgw_Table.RowHeadersWidth = 62;
             this.dgw_Table.RowTemplate.Height = 28;
             this.dgw_Table.Size = new System.Drawing.Size(609, 217);
             this.dgw_Table.TabIndex = 4;
+            this.dgw_Table.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgw_Table_CellClick);
+            // 
+            // grb_CategoryEdit
+            // 
+            this.grb_CategoryEdit.Controls.Add(this.btn_Update);
+            this.grb_CategoryEdit.Controls.Add(this.lbl_UpdateName);
+            this.grb_CategoryEdit.Controls.Add(this.txb_UpdateName);
+            this.grb_CategoryEdit.Location = new System.Drawing.Point(576, 260);
+            this.grb_CategoryEdit.Name = "grb_CategoryEdit";
+            this.grb_CategoryEdit.Size = new System.Drawing.Size(464, 184);
+            this.grb_CategoryEdit.TabIndex = 5;
+            this.grb_CategoryEdit.TabStop = false;
+            this.grb_CategoryEdit.Text = "Kateqoriya";
+            // 
+            // btn_Update
+            // 
+            this.btn_Update.Location = new System.Drawing.Point(245, 103);
+            this.btn_Update.Name = "btn_Update";
+            this.btn_Update.Size = new System.Drawing.Size(114, 46);
+            this.btn_Update.TabIndex = 2;
+            this.btn_Update.Text = "Dəyişin";
+            this.btn_Update.UseVisualStyleBackColor = true;
+            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
+            // 
+            // lbl_UpdateName
+            // 
+            this.lbl_UpdateName.AutoSize = true;
+            this.lbl_UpdateName.Location = new System.Drawing.Point(7, 52);
+            this.lbl_UpdateName.Name = "lbl_UpdateName";
+            this.lbl_UpdateName.Size = new System.Drawing.Size(111, 20);
+            this.lbl_UpdateName.TabIndex = 0;
+            this.lbl_UpdateName.Text = "Kateqoriya Adı";
+            // 
+            // txb_UpdateName
+            // 
+            this.txb_UpdateName.Location = new System.Drawing.Point(147, 52);
+            this.txb_UpdateName.Name = "txb_UpdateName";
+            this.txb_UpdateName.Size = new System.Drawing.Size(300, 26);
+            this.txb_UpdateName.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(782, 101);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 62);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CategoryForm
             // 
@@ -137,6 +195,8 @@ namespace WindowsProject
             this.grb_Categoriya.ResumeLayout(false);
             this.grb_Categoriya.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_Table)).EndInit();
+            this.grb_CategoryEdit.ResumeLayout(false);
+            this.grb_CategoryEdit.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -151,5 +211,10 @@ namespace WindowsProject
         private System.Windows.Forms.Label lbl_Name;
         private System.Windows.Forms.TextBox txb_Name;
         private System.Windows.Forms.DataGridView dgw_Table;
+        private System.Windows.Forms.GroupBox grb_CategoryEdit;
+        private System.Windows.Forms.Button btn_Update;
+        private System.Windows.Forms.Label lbl_UpdateName;
+        private System.Windows.Forms.TextBox txb_UpdateName;
+        private System.Windows.Forms.Button button1;
     }
 }

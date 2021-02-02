@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsProject.DAL;
+using WindowsProject.DataBaseContext;
 using WindowsProject.Models;
 
 namespace WindowsProject
@@ -40,6 +41,50 @@ namespace WindowsProject
             };
             dbclass.Insert(category);
 
+        }
+
+        private void dgw_Table_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txb_UpdateName.Text = dgw_Table.CurrentRow.Cells[1].Value.ToString();
+            //cmb_Janr.SelectedItem = dataGridView1.CurrentRow.Cells[3].Value.ToString() + "." + dataGridView1.CurrentRow.Cells[4].Value.ToString();
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void Update(Category book)
+        {
+            using (ShopManagementContext context = new ShopManagementContext())
+            {
+
+                //var query = context.Books.Find(book.Id);
+                var q = context.Entry(book);
+                q.State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+
+            }
+        }
+        private void btn_Update_Click(object sender, EventArgs e)
+        {
+            Category book = new Category()
+
+            {
+                Id = Convert.ToInt32(dgw_Table.CurrentRow.Cells[0].Value),
+                Name = txb_UpdateName.Text,
+
+
+            };
+            Update(book);
+          
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var y = GetAll();
+            dgw_Table.DataSource = y;
         }
     }
 }

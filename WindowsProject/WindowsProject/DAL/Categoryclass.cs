@@ -40,7 +40,9 @@ namespace WindowsProject.DAL
 
         public void Update(Category item)
         {
-            throw new NotImplementedException();
+            var q = context.Entry(item);
+            q.State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
         }
     }
 }
