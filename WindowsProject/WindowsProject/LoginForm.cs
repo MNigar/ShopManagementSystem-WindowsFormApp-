@@ -43,8 +43,8 @@ namespace WindowsProject
             //    && userList.Any(user=> user.Email.ToLower()==txb_Email.Text.ToLower() && user.Password == txb_Password.Text))
             if (result)
             {
-                RegistrationForm registrationForm = new RegistrationForm();
-                registrationForm.ShowDialog();
+                CategoryForm categoryForm = new CategoryForm();
+                categoryForm.ShowDialog();
             }
             else
             {
