@@ -18,8 +18,9 @@ namespace WindowsProject
     public partial class RegistrationForm : Form
     {
         //Idbclass<User> _repository=new Idbclass<User>();
-        private readonly IShopManagementrepository _repository;
-      
+        private  IRepositorry<User> _repository;
+       private readonly IShopManagementrepository b ;
+
         public RegistrationForm()
         {
             InitializeComponent();
@@ -30,25 +31,25 @@ namespace WindowsProject
         {
             _loginForm = form;
         }
-        public RegistrationForm(IShopManagementrepository repository)
+        public RegistrationForm(IShopManagementrepository i) : this()
         {
-           _repository = repository;
+          
+            b = i;
             
         }
         Idbclass dbclass = new Idbclass();
         LoginForm login = new LoginForm();
+
         private void btn_Registration_Click(object sender, EventArgs e)
            
         {
-
-
             using (ShopManagementContext context = new ShopManagementContext())
             {
                 User user = new User();
                 user.Id = 2;
                 user.Name = txb_Name.Text;
                 user.Surname = txb_Surname.Text;
-                user.Email = txb_Email.Text;
+                user.Email = "azer@gmail.com";
                 user.Phone = txb_PhoneNumber.Text;
                 user.Password = txb_Password.Text;
                 user.RoleId = 2;
@@ -62,9 +63,10 @@ namespace WindowsProject
                && Regex.IsMatch(txb_PhoneNumber.Text, @"^([+994])+(50|55|51|77|70|99|10|60)+[0-9]{7}$")
                && !string.IsNullOrEmpty(txb_Password.Text) && txb_Password.Text.Length > 8)
                 {
-                    dbclass.Insert(user);
+                    b.Insert(user);
                     login.Show();
-                    
+                    this.Close();
+
                 }
                 else
                 {

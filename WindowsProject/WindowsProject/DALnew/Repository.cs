@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,14 +9,16 @@ using WindowsProject.Models;
 
 namespace WindowsProject.DALnew
 {
-    public class Repository<T> : IRepositorry<T> where T : class, new()
+    public class Repository<T> : IRepositorry<T> where T : class, IEntity
     {
-        private readonly ShopManagementContext _dbContext;
-
-        public Repository(ShopManagementContext dbContext)
+        protected readonly ShopManagementContext context;
+        private DbSet<T> entities;
+        public Repository(ShopManagementContext context)
         {
-            _dbContext = dbContext;
+            this.context = context;
+            this.context.Set<T>();
         }
+
         public void Delete(int item)
         {
             throw new NotImplementedException();
@@ -33,13 +36,11 @@ namespace WindowsProject.DALnew
 
         public void Insert(T item)
         {
-             _dbContext.Set<T>().Add(item);
-             _dbContext.SaveChanges();
-        }
-
-        public void Save()
-        {
-            throw new NotImplementedException();
+            //if (item == null) throw new ArgumentNullException("entity");
+            //entities.Add(item);
+            //context.SaveChanges();
+            context.Set<T>().Add(item);
+            context.SaveChangesAsync();
         }
 
         public void Update(T item)

@@ -29,8 +29,11 @@ namespace WindowsProject
 
         private void btn_Registration_Click(object sender, EventArgs e)
         {
-            RegistrationForm reg = new RegistrationForm();
-            reg.ShowDialog();
+            //RegistrationForm reg = new RegistrationForm();
+            //reg.ShowDialog();
+            RegistrationForm registration = new RegistrationForm(this);
+
+            registration.ShowDialog();
         }
 
         private void btn_Login_Click(object sender, EventArgs e)

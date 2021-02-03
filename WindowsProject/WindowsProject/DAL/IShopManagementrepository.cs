@@ -11,5 +11,9 @@ namespace WindowsProject.DAL
 {
   public  interface IShopManagementrepository:IRepositorry<User>
     {
+
+
+
+
     }
 }

@@ -62,6 +62,8 @@
     <Compile Include="CategoryForm.Designer.cs">
       <DependentUpon>CategoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DALnew\BaseEntity.cs" />
+    <Compile Include="DALnew\IEntity.cs" />
     <Compile Include="DALnew\IRepositorry.cs" />
     <Compile Include="DALnew\Repository.cs" />
     <Compile Include="DAL\Categoryclass.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="DAL\Idb.cs" />
     <Compile Include="DAL\Idbclass.cs" />
     <Compile Include="DAL\IShopManagementrepository.cs" />
+    <Compile Include="DAL\ShopClass.cs" />
     <Compile Include="DAL\ShopManagementRepository.cs" />
     <Compile Include="DataBaseContext\ShopManagementContext.cs" />
     <Compile Include="LoginForm.cs">
@@ -78,9 +81,9 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102020632098_add.cs" />
-    <Compile Include="Migrations\202102020632098_add.designer.cs">
-      <DependentUpon>202102020632098_add.cs</DependentUpon>
+    <Compile Include="Migrations\202102030440484_add.cs" />
+    <Compile Include="Migrations\202102030440484_add.designer.cs">
+      <DependentUpon>202102030440484_add.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -101,8 +104,8 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102020632098_add.resx">
-      <DependentUpon>202102020632098_add.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102030440484_add.resx">
+      <DependentUpon>202102030440484_add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -13,7 +13,7 @@ namespace WindowsProject.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202102020632098_add"; }
+            get { return "202102030440484_add"; }
         }
         
         string IMigrationMetadata.Source

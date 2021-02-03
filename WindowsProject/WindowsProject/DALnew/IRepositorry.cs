@@ -7,15 +7,14 @@ using WindowsProject.Models;
 
 namespace WindowsProject.DALnew
 {
-  public  interface IRepositorry<T> where T : class
+  public  interface IRepositorry<T> where T : class, IEntity
     {   
         IEnumerable<T> GetAll();
         T GetById(int id);
         void Insert(T item);
         void Update(T item);
         void Delete(int item);
-        void Save();
-
+   
 
 
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsProject.DAL;
+using WindowsProject.DALnew;
 using WindowsProject.Models;
 
 namespace WindowsProject

@@ -51,5 +51,5 @@ D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsPr
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.csproj.CopyComplete
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.exe
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.pdb
-D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.add.resources
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.CategoryForm.resources
+D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.add.resources
