@@ -4,14 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsProject.DALnew;
+using WindowsProject.DataAccessLayer;
 
 namespace WindowsProject.Models
 {
-    public class User:BaseEntity
+    public class User
     {
-      
-    
+
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }

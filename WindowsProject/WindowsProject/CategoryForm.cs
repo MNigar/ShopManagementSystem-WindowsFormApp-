@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsProject.DAL;
+using WindowsProject.DatabaseRep;
 using WindowsProject.DataBaseContext;
 using WindowsProject.Models;
 
@@ -18,28 +18,41 @@ namespace WindowsProject
         public CategoryForm()
         {
             InitializeComponent();
-            dgw_Table.DataSource = GetAll();
+            GetAll();
         }
+        ICategoryRepository repository;
 
-
-        Categoryclass dbclass = new Categoryclass();
+       
 
         private void CategoryForm_Load(object sender, EventArgs e)
         {
 
             
         }
-        private List<Category> GetAll()
+        private void GetAll()
         {
-            return dbclass.GetAll();
+            using (ShopManagementContext context = new ShopManagementContext())
+            {
+                repository = new CategoryRepository(context);
+                dgw_Table.DataSource=  repository.GetAll();
+
+               
+            }
         }
         private void btn_Insert_Click(object sender, EventArgs e)
         {
-            Category category = new Category()
+          
+            using (ShopManagementContext context = new ShopManagementContext())
             {
-                Name = txb_Name.Text
-            };
-            dbclass.Insert(category);
+                repository = new CategoryRepository(context);
+                Category category = new Category()
+                {
+                    Name = txb_Name.Text
+                };
+               repository.Insert(category);
+                
+                GetAll();
+            }
 
         }
 
@@ -68,23 +81,24 @@ namespace WindowsProject
         }
         private void btn_Update_Click(object sender, EventArgs e)
         {
-            Category book = new Category()
 
+
+            using (ShopManagementContext context = new ShopManagementContext())
             {
-                Id = Convert.ToInt32(dgw_Table.CurrentRow.Cells[0].Value),
-                Name = txb_UpdateName.Text,
-
-
-            };
-            Update(book);
-          
-
+                repository = new CategoryRepository(context);
+                Category book = new Category()
+                {
+                    Id = Convert.ToInt32(dgw_Table.CurrentRow.Cells[0].Value),
+                    Name = txb_UpdateName.Text,
+                };             
+                repository.Update(book);
+                GetAll();
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_GetAll_Click(object sender, EventArgs e)
         {
-            var y = GetAll();
-            dgw_Table.DataSource = y;
+            GetAll();
         }
     }
 }

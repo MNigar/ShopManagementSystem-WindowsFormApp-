@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsProject.DataAccessLayer;
 
 namespace WindowsProject.Models
 {
@@ -13,8 +14,8 @@ namespace WindowsProject.Models
         {
             Products = new List<Product>();
         }
-        [Key]
         public int Id { get; set; }
+
         public string Name { get; set; }
         public List<Product> Products { get; set; }
     }

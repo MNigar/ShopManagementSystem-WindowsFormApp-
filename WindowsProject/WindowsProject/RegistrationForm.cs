@@ -8,8 +8,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsProject.DAL;
-using WindowsProject.DALnew;
+using WindowsProject.DatabaseRep;
+using WindowsProject.DataAccessLayer;
 using WindowsProject.DataBaseContext;
 using WindowsProject.Models;
 
@@ -18,8 +18,8 @@ namespace WindowsProject
     public partial class RegistrationForm : Form
     {
         //Idbclass<User> _repository=new Idbclass<User>();
-        private  IRepositorry<User> _repository;
-       private readonly IShopManagementrepository b ;
+      
+        IUserRepository repository ;
 
         public RegistrationForm()
         {
@@ -31,25 +31,29 @@ namespace WindowsProject
         {
             _loginForm = form;
         }
-        public RegistrationForm(IShopManagementrepository i) : this()
+        public RegistrationForm(IUserRepository i) : this()
         {
           
-            b = i;
+            repository = i;
             
         }
-        Idbclass dbclass = new Idbclass();
+
         LoginForm login = new LoginForm();
 
         private void btn_Registration_Click(object sender, EventArgs e)
            
         {
+          
             using (ShopManagementContext context = new ShopManagementContext())
             {
+                repository = new UserRepository(context);
+                List<User> users = new List<User>();
                 User user = new User();
-                user.Id = 2;
+                
+              
                 user.Name = txb_Name.Text;
                 user.Surname = txb_Surname.Text;
-                user.Email = "azer@gmail.com";
+                user.Email = txb_Email.Text;
                 user.Phone = txb_PhoneNumber.Text;
                 user.Password = txb_Password.Text;
                 user.RoleId = 2;
@@ -63,10 +67,16 @@ namespace WindowsProject
                && Regex.IsMatch(txb_PhoneNumber.Text, @"^([+994])+(50|55|51|77|70|99|10|60)+[0-9]{7}$")
                && !string.IsNullOrEmpty(txb_Password.Text) && txb_Password.Text.Length > 8)
                 {
-                    b.Insert(user);
-                    login.Show();
-                    this.Close();
+                    if (! repository.IfAlreadyExist(user.Email, users))
+                        {
 
+
+                        repository.Insert(user);
+                        login.Show();
+                        //this.Close();
+                    }
+                    else
+                    { MessageBox.Show("Bu istifadeci movcuddur"); }
                 }
                 else
                 {

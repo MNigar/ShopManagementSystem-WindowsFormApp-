@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsProject.DAL;
+using WindowsProject.DataBaseContext;
+using WindowsProject.DatabaseRep;
 
 namespace WindowsProject
 {
@@ -17,7 +18,7 @@ namespace WindowsProject
         {
             InitializeComponent();
         }
-        Idbclass dbclass = new Idbclass();
+        IUserRepository repository;
         private void LoginForm_Load(object sender, EventArgs e)
         {
             
@@ -38,20 +39,31 @@ namespace WindowsProject
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            var userList = dbclass.GetAll();
-            string email = txb_Email.Text;
-            string password = txb_Password.Text;
-            var result = dbclass.IfExist(email, password, userList);
-            //if(!string.IsNullOrEmpty(txb_Email.Text) && !string.IsNullOrEmpty(txb_Password.Text)                
-            //    && userList.Any(user=> user.Email.ToLower()==txb_Email.Text.ToLower() && user.Password == txb_Password.Text))
-            if (result)
-            {
-                CategoryForm categoryForm = new CategoryForm();
-                categoryForm.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Email və ya şifrə doğru daxil edilməyib");
+            using (ShopManagementContext context = new ShopManagementContext()) {
+                repository = new UserRepository(context);
+                var userList = repository.GetAll();
+                string email = txb_Email.Text;
+                string password = txb_Password.Text;
+                var user = userList.Where(p=>p.Email == email).FirstOrDefault();
+                var result = repository.IfExist(email, password, userList);
+                //if(!string.IsNullOrEmpty(txb_Email.Text) && !string.IsNullOrEmpty(txb_Password.Text)                
+                //    && userList.Any(user=> user.Email.ToLower()==txb_Email.Text.ToLower() && user.Password == txb_Password.Text))
+                if (result)
+                {
+                    if (user.RoleId == 2)
+                    {
+                        CategoryForm categoryForm = new CategoryForm();
+                        categoryForm.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Welcome");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Email və ya şifrə doğru daxil edilməyib");
+                }
             }
 
         }
