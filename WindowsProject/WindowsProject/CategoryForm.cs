@@ -19,6 +19,7 @@ namespace WindowsProject
         {
             InitializeComponent();
             GetAll();
+            SetJanr();
         }
         ICategoryRepository repository;
 
@@ -99,6 +100,18 @@ namespace WindowsProject
         private void btn_GetAll_Click(object sender, EventArgs e)
         {
             GetAll();
+        }
+
+        private void SetJanr()
+        {
+            using (ShopManagementContext context = new ShopManagementContext())
+            {
+                repository = new CategoryRepository(context);
+                foreach (Category category in repository.GetAll())
+                {
+                    cmb_Category.Items.Add(category.Id + "." + category.Name);
+                }
+            }
         }
     }
 }
