@@ -19,16 +19,21 @@ namespace WindowsProject
         {
             InitializeComponent();
             GetAll();
-            SetJanr();
+            SetCategory();
+           
         }
         ICategoryRepository repository;
 
-       
+        int user = LoginForm.LoginInfo.UserID;
 
         private void CategoryForm_Load(object sender, EventArgs e)
         {
-
+           
             
+        }
+        public void funData(TextBox txtForm1)
+        {
+            lbl_UserId.Text = txtForm1.Text;
         }
         private void GetAll()
         {
@@ -102,7 +107,7 @@ namespace WindowsProject
             GetAll();
         }
 
-        private void SetJanr()
+        private void SetCategory()
         {
             using (ShopManagementContext context = new ShopManagementContext())
             {
@@ -113,5 +118,43 @@ namespace WindowsProject
                 }
             }
         }
+        IProductRepository productRepository;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (ShopManagementContext context = new ShopManagementContext())
+            {
+                productRepository = new ProductRepository(context);
+                int userid = Convert.ToInt32(lbl_UserId.Text);
+                var user = context.Users.Where(y => y.Id == userid).FirstOrDefault();
+                productRepository.Insert(new Product
+                {
+
+                    Name = txb_Name.Text,
+                    CategoryId = Convert.ToInt32(cmb_Category.Text.Split('.')[0]),
+                    Price = Convert.ToInt32(txb_Price.Text),
+                    Count = Convert.ToInt32(txb_Count.Text),
+                    CreatedUser=user.Id,
+                    PhoneNumber=user.Phone,
+                    Status = 0,
+
+
+
+
+                });
+                
+            }
+
+
+
+
+
+
+            }
+
+            private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
-}
+    }
+

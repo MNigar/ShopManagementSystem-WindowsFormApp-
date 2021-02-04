@@ -35,6 +35,7 @@ namespace WindowsProject
             this.lbl_Email = new System.Windows.Forms.Label();
             this.txb_Email = new System.Windows.Forms.TextBox();
             this.lbl_Password = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btn_Login
@@ -103,11 +104,23 @@ namespace WindowsProject
             this.lbl_Password.Text = "Şifrə";
             this.lbl_Password.UseWaitCursor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(40, 168);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.MaxLength = 20;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PasswordChar = '*';
+            this.textBox1.Size = new System.Drawing.Size(161, 20);
+            this.textBox1.TabIndex = 22;
+            this.textBox1.UseWaitCursor = true;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 292);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.btn_Registration);
             this.Controls.Add(this.txb_Password);
@@ -131,5 +144,6 @@ namespace WindowsProject
         private System.Windows.Forms.Label lbl_Email;
         private System.Windows.Forms.TextBox txb_Email;
         private System.Windows.Forms.Label lbl_Password;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

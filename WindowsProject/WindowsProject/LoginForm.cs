@@ -25,9 +25,11 @@ namespace WindowsProject
 
 
         }
-
-        
-
+        public delegate void delPassData(TextBox text);
+        public static class LoginInfo
+        {
+            public static int UserID;
+        }
         private void btn_Registration_Click(object sender, EventArgs e)
         {
             //RegistrationForm reg = new RegistrationForm();
@@ -52,8 +54,16 @@ namespace WindowsProject
                 {
                     if (user.RoleId == 2)
                     {
+                       
+                        textBox1.Text = Convert.ToString(user.Id);
+
                         CategoryForm categoryForm = new CategoryForm();
-                        categoryForm.ShowDialog();
+                
+
+                      
+                        delPassData del = new delPassData(categoryForm.funData);
+                        del(this.textBox1);
+                        categoryForm.Show();
                     }
                     else
                     {
