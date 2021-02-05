@@ -91,3 +91,8 @@ D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\bin\Debug\System.Th
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.adds.resources
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.adds1.resources
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.h.resources
+D:\COVID1904\WinformFinalProject\pr\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.h.resources
+D:\COVID1904\WinformFinalProject\pr\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.adddds.resources
+D:\COVID1904\WinformFinalProject\pr\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.dsjd.resources
+D:\COVID1904\WinformFinalProject\pr\WindowsProject\WindowsProject\obj\Debug\WindowsProject.IndexForm.resources
+D:\COVID1904\WinformFinalProject\pr\WindowsProject\WindowsProject\obj\Debug\WindowsProject.ProductForm.resources

@@ -20,6 +20,7 @@ namespace WindowsProject
             InitializeComponent();
             GetAll();
             SetCategory();
+            GetAllProduct();
            
         }
         ICategoryRepository repository;
@@ -115,6 +116,7 @@ namespace WindowsProject
                 foreach (Category category in repository.GetAll())
                 {
                     cmb_Category.Items.Add(category.Id + "." + category.Name);
+                    cmb_UpdatePr.Items.Add(category.Id + "." + category.Name);
                 }
             }
         }
@@ -126,11 +128,10 @@ namespace WindowsProject
                 productRepository = new ProductRepository(context);
                 int userid = Convert.ToInt32(lbl_UserId.Text);
                 var user = context.Users.Where(y => y.Id == userid).FirstOrDefault();
-                var pr = new Product()
-                {Id=5,
+                Product pr = new Product()
+                {
                     Name = tbx_productName.Text,
                     CategoryId = Convert.ToInt32(cmb_Category.Text.Split('.')[0]),
-
                     Price = Convert.ToInt32(txb_Price.Text),
                     Count = Convert.ToInt32(txb_Count.Text),
                     CreatedUser = user.Id,
@@ -139,28 +140,68 @@ namespace WindowsProject
                 };
                 productRepository.Insert(pr);
             }
+        }
+        private void GetAllProduct()
+        {
+            using (ShopManagementContext context = new ShopManagementContext())
+            {
+                var query = context.Products.Select(product => new
+                {
+                    product.Id,
+                    product.Name,
+                    product.Price,
+                    product.Count,
+                    Category = product.Category.Name,
+                    product.CategoryId,
+                    product.Status,
+                    product.CreatedUser,
+                    product.PhoneNumber
 
-
-
-
-
-
+                }).ToList();
+                dgw_ProductTable.DataSource = query;
             }
-
-            private void tabPage2_Click(object sender, EventArgs e)
-        {
-
+            
         }
 
-        private void txb_Count_TextChanged(object sender, EventArgs e)
+       
+        private void dgw_ProductTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            txb_PrUpdateName.Text = dgw_ProductTable.CurrentRow.Cells[1].Value.ToString();
+            cmb_UpdatePr.SelectedItem = dgw_ProductTable.CurrentRow.Cells[5].Value.ToString() + "." + dgw_ProductTable.CurrentRow.Cells[4].Value.ToString();
+            cmb_Category.SelectedItem = dgw_ProductTable.CurrentRow.Cells[5].Value.ToString() + "." + dgw_ProductTable.CurrentRow.Cells[4].Value.ToString();
 
+            txb_PrUpdatePrice.Text = dgw_ProductTable.CurrentRow.Cells[2].Value.ToString();
+            txb_PrUpdateCount.Text= dgw_ProductTable.CurrentRow.Cells[3].Value.ToString();
+            
+            //cmb_Category.SelectedItem = dgw_ProductTable.CurrentRow.Cells[3].Value.ToString() + "." + dgw_ProductTable.CurrentRow.Cells[4].Value.ToString();
         }
 
-        private void cmb_Category_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
+            using (ShopManagementContext context = new ShopManagementContext())
+            {
+                productRepository = new ProductRepository(context);
+                int userid = Convert.ToInt32(lbl_UserId.Text);
+                var user = context.Users.Where(y => y.Id == userid).FirstOrDefault();
+                Product product = new Product()
+                {
+                    Id = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[0].Value),
+                    Name = txb_PrUpdateName.Text,
+                    CategoryId= Convert.ToInt32(cmb_UpdatePr.Text.Split('.')[0]),
+                    Price= Convert.ToDecimal(txb_PrUpdatePrice.Text),
+                    Count = Convert.ToInt32(txb_PrUpdateCount.Text),
+                    CreatedUser=user.Id,
+                    PhoneNumber=user.Phone,
+                    Status=0,
 
+                };
+
+                productRepository.Update(product);
+                GetAllProduct();
+            }
         }
+
+       
     }
-    }
+ }
 

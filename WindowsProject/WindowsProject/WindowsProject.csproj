@@ -96,6 +96,12 @@
     <Compile Include="DatabaseRep\ProductRepository.cs" />
     <Compile Include="DatabaseRep\UserRepository.cs" />
     <Compile Include="DataBaseContext\ShopManagementContext.cs" />
+    <Compile Include="IndexForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndexForm.Designer.cs">
+      <DependentUpon>IndexForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,14 @@
     <Compile Include="Migrations\202102031045078_adds1.designer.cs">
       <DependentUpon>202102031045078_adds1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102050523210_adddds.cs" />
+    <Compile Include="Migrations\202102050523210_adddds.designer.cs">
+      <DependentUpon>202102050523210_adddds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102050610475_dsjd.cs" />
+    <Compile Include="Migrations\202102050610475_dsjd.designer.cs">
+      <DependentUpon>202102050610475_dsjd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202102050941091_h.cs" />
     <Compile Include="Migrations\202102050941091_h.designer.cs">
       <DependentUpon>202102050941091_h.cs</DependentUpon>
@@ -123,6 +137,12 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="ProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductForm.Designer.cs">
+      <DependentUpon>ProductForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationForm.cs">
@@ -133,6 +153,9 @@
     </Compile>
     <EmbeddedResource Include="CategoryForm.resx">
       <DependentUpon>CategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IndexForm.resx">
+      <DependentUpon>IndexForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -146,8 +169,17 @@
     <EmbeddedResource Include="Migrations\202102031045078_adds1.resx">
       <DependentUpon>202102031045078_adds1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102050523210_adddds.resx">
+      <DependentUpon>202102050523210_adddds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102050610475_dsjd.resx">
+      <DependentUpon>202102050610475_dsjd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102050941091_h.resx">
       <DependentUpon>202102050941091_h.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductForm.resx">
+      <DependentUpon>ProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

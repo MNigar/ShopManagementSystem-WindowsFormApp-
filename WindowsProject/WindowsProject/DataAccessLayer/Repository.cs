@@ -12,7 +12,7 @@ namespace WindowsProject.DataAccessLayer
     public class Repository<T> : IRepository<T> where T : class
     {
         protected readonly ShopManagementContext context;
-        private DbSet<T> entities;
+   
         public Repository(ShopManagementContext context)
         {
             this.context = context;
