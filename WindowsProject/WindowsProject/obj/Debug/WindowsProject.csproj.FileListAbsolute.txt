@@ -90,3 +90,4 @@ D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\bin\Debug\System.Ru
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.adds.resources
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.adds1.resources
+D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.h.resources

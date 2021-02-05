@@ -126,22 +126,18 @@ namespace WindowsProject
                 productRepository = new ProductRepository(context);
                 int userid = Convert.ToInt32(lbl_UserId.Text);
                 var user = context.Users.Where(y => y.Id == userid).FirstOrDefault();
-                productRepository.Insert(new Product
-                {
-
-                    Name = txb_Name.Text,
+                var pr = new Product()
+                {Id=5,
+                    Name = tbx_productName.Text,
                     CategoryId = Convert.ToInt32(cmb_Category.Text.Split('.')[0]),
+
                     Price = Convert.ToInt32(txb_Price.Text),
                     Count = Convert.ToInt32(txb_Count.Text),
-                    CreatedUser=user.Id,
-                    PhoneNumber=user.Phone,
-                    Status = 0,
-
-
-
-
-                });
-                
+                    CreatedUser = user.Id,
+                    PhoneNumber = user.Phone,
+                    Status = 0
+                };
+                productRepository.Insert(pr);
             }
 
 
@@ -152,6 +148,16 @@ namespace WindowsProject
             }
 
             private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txb_Count_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmb_Category_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
