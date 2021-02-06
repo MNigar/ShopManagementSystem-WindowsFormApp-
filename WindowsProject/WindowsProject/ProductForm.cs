@@ -60,7 +60,7 @@ namespace WindowsProject
                     CategoryId = Convert.ToInt32(cmb_Category.Text.Split('.')[0]),
                     Price = Convert.ToInt32(txb_Price.Text),
                     Count = Convert.ToInt32(txb_Count.Text),
-                    CreatedUser = user.Id,
+                    CreatedUserId = user.Id,
                     PhoneNumber = user.Phone,
                     Status = 0
                 };

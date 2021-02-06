@@ -91,8 +91,10 @@
     <Compile Include="DataAccessLayer\Repository.cs" />
     <Compile Include="DatabaseRep\CategoryRepository.cs" />
     <Compile Include="DatabaseRep\ICategoryRepository.cs" />
+    <Compile Include="DatabaseRep\ILogProductRepository.cs" />
     <Compile Include="DatabaseRep\IProductRepository.cs" />
     <Compile Include="DatabaseRep\IUserRepository.cs" />
+    <Compile Include="DatabaseRep\LogProductRepository.cs" />
     <Compile Include="DatabaseRep\ProductRepository.cs" />
     <Compile Include="DatabaseRep\UserRepository.cs" />
     <Compile Include="DataBaseContext\ShopManagementContext.cs" />
@@ -132,8 +134,21 @@
     <Compile Include="Migrations\202102050941091_h.designer.cs">
       <DependentUpon>202102050941091_h.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102060341124_hh.cs" />
+    <Compile Include="Migrations\202102060341124_hh.designer.cs">
+      <DependentUpon>202102060341124_hh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102060922131_hhddlm.cs" />
+    <Compile Include="Migrations\202102060922131_hhddlm.designer.cs">
+      <DependentUpon>202102060922131_hhddlm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102060942347_hhddlmkk.cs" />
+    <Compile Include="Migrations\202102060942347_hhddlmkk.designer.cs">
+      <DependentUpon>202102060942347_hhddlmkk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\LogProduct.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
@@ -177,6 +192,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102050941091_h.resx">
       <DependentUpon>202102050941091_h.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102060341124_hh.resx">
+      <DependentUpon>202102060341124_hh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102060922131_hhddlm.resx">
+      <DependentUpon>202102060922131_hhddlm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102060942347_hhddlmkk.resx">
+      <DependentUpon>202102060942347_hhddlmkk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>

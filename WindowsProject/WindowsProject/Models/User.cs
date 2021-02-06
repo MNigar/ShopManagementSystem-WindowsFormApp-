@@ -10,7 +10,12 @@ namespace WindowsProject.Models
 {
     public class User
     {
-
+        public User()
+        {
+            Products = new List<Product>();
+            LogProduct = new List<LogProduct>();
+            
+        }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -21,5 +26,8 @@ namespace WindowsProject.Models
         public int Status { get; set; }
         public Role Role { get; set; }
         public int RoleId { get; set; }
+        public List<Product> Products { get; set; }
+        public List<LogProduct> LogProduct { get; set; }
+     
     }
 }

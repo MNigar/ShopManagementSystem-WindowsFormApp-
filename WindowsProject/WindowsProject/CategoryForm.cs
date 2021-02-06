@@ -24,14 +24,10 @@ namespace WindowsProject
            
         }
         ICategoryRepository repository;
-
+        ILogProductRepository logProductRepository;
         int user = LoginForm.LoginInfo.UserID;
 
-        private void CategoryForm_Load(object sender, EventArgs e)
-        {
-           
-            
-        }
+      
         public void funData(TextBox txtForm1)
         {
             lbl_UserId.Text = txtForm1.Text;
@@ -41,9 +37,9 @@ namespace WindowsProject
             using (ShopManagementContext context = new ShopManagementContext())
             {
                 repository = new CategoryRepository(context);
-                dgw_Table.DataSource=  repository.GetAll();
-
-               
+                var query= repository.GetAll();
+                var t= query.Where(y => y.Status == 0).ToList();
+                dgw_Table.DataSource = t;              
             }
         }
         private void btn_Insert_Click(object sender, EventArgs e)
@@ -54,7 +50,8 @@ namespace WindowsProject
                 repository = new CategoryRepository(context);
                 Category category = new Category()
                 {
-                    Name = txb_Name.Text
+                    Name = txb_Name.Text,
+                    Status=0
                 };
                repository.Insert(category);
                 
@@ -70,26 +67,9 @@ namespace WindowsProject
 
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void Update(Category book)
-        {
-            using (ShopManagementContext context = new ShopManagementContext())
-            {
-
-                //var query = context.Books.Find(book.Id);
-                var q = context.Entry(book);
-                q.State = System.Data.Entity.EntityState.Modified;
-                context.SaveChanges();
-
-            }
-        }
+        
         private void btn_Update_Click(object sender, EventArgs e)
         {
-
-
             using (ShopManagementContext context = new ShopManagementContext())
             {
                 repository = new CategoryRepository(context);
@@ -134,18 +114,21 @@ namespace WindowsProject
                     CategoryId = Convert.ToInt32(cmb_Category.Text.Split('.')[0]),
                     Price = Convert.ToInt32(txb_Price.Text),
                     Count = Convert.ToInt32(txb_Count.Text),
-                    CreatedUser = user.Id,
+                    CreatedUserId = user.Id,
                     PhoneNumber = user.Phone,
-                    Status = 0
+                    Status = 0,
+                    SoldedTotal=0,
+                    SoldedCount=0
                 };
                 productRepository.Insert(pr);
+                GetAllProduct();
             }
         }
         private void GetAllProduct()
         {
             using (ShopManagementContext context = new ShopManagementContext())
             {
-                var query = context.Products.Select(product => new
+                var query = context.Products.Where(y=>y.Status==0).Select(product => new
                 {
                     product.Id,
                     product.Name,
@@ -154,7 +137,7 @@ namespace WindowsProject
                     Category = product.Category.Name,
                     product.CategoryId,
                     product.Status,
-                    product.CreatedUser,
+                    product.CreatedUserId,
                     product.PhoneNumber
 
                 }).ToList();
@@ -168,8 +151,6 @@ namespace WindowsProject
         {
             txb_PrUpdateName.Text = dgw_ProductTable.CurrentRow.Cells[1].Value.ToString();
             cmb_UpdatePr.SelectedItem = dgw_ProductTable.CurrentRow.Cells[5].Value.ToString() + "." + dgw_ProductTable.CurrentRow.Cells[4].Value.ToString();
-            cmb_Category.SelectedItem = dgw_ProductTable.CurrentRow.Cells[5].Value.ToString() + "." + dgw_ProductTable.CurrentRow.Cells[4].Value.ToString();
-
             txb_PrUpdatePrice.Text = dgw_ProductTable.CurrentRow.Cells[2].Value.ToString();
             txb_PrUpdateCount.Text= dgw_ProductTable.CurrentRow.Cells[3].Value.ToString();
             
@@ -181,6 +162,7 @@ namespace WindowsProject
             using (ShopManagementContext context = new ShopManagementContext())
             {
                 productRepository = new ProductRepository(context);
+                logProductRepository = new LogProductRepository(context);
                 int userid = Convert.ToInt32(lbl_UserId.Text);
                 var user = context.Users.Where(y => y.Id == userid).FirstOrDefault();
                 Product product = new Product()
@@ -190,9 +172,57 @@ namespace WindowsProject
                     CategoryId= Convert.ToInt32(cmb_UpdatePr.Text.Split('.')[0]),
                     Price= Convert.ToDecimal(txb_PrUpdatePrice.Text),
                     Count = Convert.ToInt32(txb_PrUpdateCount.Text),
-                    CreatedUser=user.Id,
+                    CreatedUserId=user.Id,
                     PhoneNumber=user.Phone,
                     Status=0,
+
+                };
+                if (rtb_Description.Text == null)
+                {
+                    MessageBox.Show("Izahat mətnini daxil edin");
+                }
+                else
+                {
+                    LogProduct logProduct = new LogProduct()
+                    {
+                        ProductId = product.Id,
+                        Description = rtb_Description.Text,
+                        Status = 1,
+                        UserId = user.Id,
+                        Date = DateTime.Now
+
+                    };
+                    productRepository.Update(product);
+                    logProductRepository.Insert(logProduct);
+                }
+               
+                GetAllProduct();
+            }
+        }
+
+        private void btnGetAll_Click(object sender, EventArgs e)
+        {
+            GetAllProduct();
+        }
+
+        private void btn_DeletePr_Click(object sender, EventArgs e)
+        {
+            using (ShopManagementContext context = new ShopManagementContext())
+            {
+                productRepository = new ProductRepository(context);
+                int userid = Convert.ToInt32(lbl_UserId.Text);
+                var user = context.Users.Where(y => y.Id == userid).FirstOrDefault();
+                Product product = new Product()
+                {
+                    Id = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[0].Value),
+                    Name = dgw_ProductTable.CurrentRow.Cells[1].Value.ToString(),
+
+                    CategoryId = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[5].Value.ToString()),
+                    Price = Convert.ToDecimal(dgw_ProductTable.CurrentRow.Cells[2].Value.ToString()),
+                    Count = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[3].Value.ToString()),
+                    CreatedUserId = user.Id,
+                    PhoneNumber = user.Phone,
+                    Status = 1,
 
                 };
 
@@ -201,7 +231,59 @@ namespace WindowsProject
             }
         }
 
-       
+        private void btn_DeleteCategory_Click(object sender, EventArgs e)
+        {
+            using (ShopManagementContext context = new ShopManagementContext())
+            {
+                repository = new CategoryRepository(context);
+
+                Category product = new Category()
+                {
+                    Id = Convert.ToInt32(dgw_Table.CurrentRow.Cells[0].Value),
+                    Name = dgw_Table.CurrentRow.Cells[1].Value.ToString(),
+                    Status = 1
+
+                };
+
+                repository.Update(product);
+                GetAll();
+            }
+        }
+
+        private void btn_Buy_Click(object sender, EventArgs e)
+        {
+
+            using(ShopManagementContext context=new ShopManagementContext())
+            {
+                productRepository = new ProductRepository(context);
+
+                var userid = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[7].Value.ToString());
+                var user = context.Users.Where(u => u.Id == userid).FirstOrDefault();
+                Product product = new Product()
+                {
+                    Id = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[0].Value),
+                    Name = dgw_ProductTable.CurrentRow.Cells[1].Value.ToString(),
+
+                    CategoryId = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[5].Value.ToString()),
+                    Price = Convert.ToDecimal(dgw_ProductTable.CurrentRow.Cells[2].Value.ToString()),
+                    Count = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[3].Value.ToString())-1,
+                    CreatedUserId = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[7].Value.ToString()),
+                    PhoneNumber = user.Phone,
+                    Status = 0,
+                   
+
+
+                };
+                productRepository.Update(product);
+                if (product.Count == 0)
+                {
+                    product.Status = 1;
+                }
+                GetAllProduct();
+            }
+
+
+        }
     }
  }
 

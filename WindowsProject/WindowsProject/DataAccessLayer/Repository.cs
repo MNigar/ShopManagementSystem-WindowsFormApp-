@@ -45,7 +45,7 @@ namespace WindowsProject.DataAccessLayer
             //entities.Add(item);
             //context.SaveChanges();
             context.Set<T>().Add(item);
-            context.SaveChangesAsync();
+            context.SaveChanges();
         }
 
         public void Update(T item)
