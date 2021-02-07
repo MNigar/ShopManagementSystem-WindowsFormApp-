@@ -33,7 +33,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl_rct = new System.Windows.Forms.Label();
+            this.btn_ClearInput = new System.Windows.Forms.Button();
+            this.rtb_Description = new System.Windows.Forms.RichTextBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.lbl_UserId = new System.Windows.Forms.Label();
+            this.btn_Delete = new System.Windows.Forms.Button();
             this.cmb_Category = new System.Windows.Forms.ComboBox();
             this.lbl_PhoneNumber = new System.Windows.Forms.Label();
             this.txb_Count = new System.Windows.Forms.TextBox();
@@ -44,25 +49,25 @@
             this.lblName = new System.Windows.Forms.Label();
             this.tbx_productName = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.rtb_Description = new System.Windows.Forms.RichTextBox();
-            this.btn_Delete = new System.Windows.Forms.Button();
-            this.btn_ClearInput = new System.Windows.Forms.Button();
+            this.btn_SearchByUser = new System.Windows.Forms.Button();
+            this.lbl_CategoryS = new System.Windows.Forms.Label();
+            this.lbl_Prices = new System.Windows.Forms.Label();
+            this.lbl_CountS = new System.Windows.Forms.Label();
+            this.lbl_UserIDS = new System.Windows.Forms.Label();
+            this.lbl_Name = new System.Windows.Forms.Label();
+            this.btn_Search = new System.Windows.Forms.Button();
+            this.cmb_SearchDetail = new System.Windows.Forms.ComboBox();
+            this.txbSearchPrice = new System.Windows.Forms.TextBox();
+            this.txbSerachCount = new System.Windows.Forms.TextBox();
+            this.txb_UserId = new System.Windows.Forms.TextBox();
+            this.txb_SearchDetailName = new System.Windows.Forms.TextBox();
             this.btn_Buy = new System.Windows.Forms.Button();
             this.txb_SearchName = new System.Windows.Forms.TextBox();
             this.cmb_SearchCategory = new System.Windows.Forms.ComboBox();
             this.btn_GetAll = new System.Windows.Forms.Button();
-            this.txb_SearchDetailName = new System.Windows.Forms.TextBox();
-            this.txb_UserId = new System.Windows.Forms.TextBox();
-            this.txbSerachCount = new System.Windows.Forms.TextBox();
-            this.txbSearchPrice = new System.Windows.Forms.TextBox();
-            this.cmb_SearchDetail = new System.Windows.Forms.ComboBox();
-            this.btn_Search = new System.Windows.Forms.Button();
-            this.lbl_Name = new System.Windows.Forms.Label();
-            this.lbl_UserIDS = new System.Windows.Forms.Label();
-            this.lbl_CountS = new System.Windows.Forms.Label();
-            this.lbl_Prices = new System.Windows.Forms.Label();
-            this.lbl_CategoryS = new System.Windows.Forms.Label();
+            this.cmb_SearchByUserCategory = new System.Windows.Forms.ComboBox();
+            this.txb_SearchNameByUSer = new System.Windows.Forms.TextBox();
+            this.btn_SearchUSers = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_ProductTable)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -84,7 +89,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(477, 151);
+            this.textBox1.Location = new System.Drawing.Point(806, 305);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(300, 26);
             this.textBox1.TabIndex = 17;
@@ -93,10 +98,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 301);
+            this.tabControl1.Location = new System.Drawing.Point(12, 258);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(788, 412);
+            this.tabControl1.Size = new System.Drawing.Size(1162, 504);
             this.tabControl1.TabIndex = 18;
             // 
             // tabPage1
@@ -105,19 +110,19 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(780, 379);
+            this.tabPage1.Size = new System.Drawing.Size(1154, 471);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "ForCrud";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbl_rct);
             this.groupBox1.Controls.Add(this.btn_ClearInput);
             this.groupBox1.Controls.Add(this.rtb_Description);
             this.groupBox1.Controls.Add(this.btnUpdate);
             this.groupBox1.Controls.Add(this.lbl_UserId);
             this.groupBox1.Controls.Add(this.btn_Delete);
-            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.cmb_Category);
             this.groupBox1.Controls.Add(this.lbl_PhoneNumber);
             this.groupBox1.Controls.Add(this.txb_Count);
@@ -131,21 +136,69 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(748, 338);
+            this.groupBox1.Size = new System.Drawing.Size(1007, 445);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // lbl_rct
+            // 
+            this.lbl_rct.AutoSize = true;
+            this.lbl_rct.Location = new System.Drawing.Point(-31, 273);
+            this.lbl_rct.Name = "lbl_rct";
+            this.lbl_rct.Size = new System.Drawing.Size(251, 20);
+            this.lbl_rct.TabIndex = 21;
+            this.lbl_rct.Text = "Deyisdikde ve ya sildikde Doldurun";
+            this.lbl_rct.Visible = false;
+            // 
+            // btn_ClearInput
+            // 
+            this.btn_ClearInput.Location = new System.Drawing.Point(795, 46);
+            this.btn_ClearInput.Name = "btn_ClearInput";
+            this.btn_ClearInput.Size = new System.Drawing.Size(156, 46);
+            this.btn_ClearInput.TabIndex = 20;
+            this.btn_ClearInput.Text = "Xanaları Təmizlə";
+            this.btn_ClearInput.UseVisualStyleBackColor = true;
+            this.btn_ClearInput.Click += new System.EventHandler(this.btn_ClearInput_Click);
+            // 
+            // rtb_Description
+            // 
+            this.rtb_Description.Location = new System.Drawing.Point(226, 249);
+            this.rtb_Description.Name = "rtb_Description";
+            this.rtb_Description.Size = new System.Drawing.Size(254, 112);
+            this.rtb_Description.TabIndex = 19;
+            this.rtb_Description.Text = "";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(316, 391);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(114, 46);
+            this.btnUpdate.TabIndex = 17;
+            this.btnUpdate.Text = "Dəyişin";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // lbl_UserId
             // 
             this.lbl_UserId.AutoSize = true;
-            this.lbl_UserId.Location = new System.Drawing.Point(22, 288);
+            this.lbl_UserId.Location = new System.Drawing.Point(24, 417);
             this.lbl_UserId.Name = "lbl_UserId";
             this.lbl_UserId.Size = new System.Drawing.Size(58, 20);
             this.lbl_UserId.TabIndex = 4;
             this.lbl_UserId.Text = "USerid";
             this.lbl_UserId.Visible = false;
+            // 
+            // btn_Delete
+            // 
+            this.btn_Delete.Location = new System.Drawing.Point(795, 103);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(114, 46);
+            this.btn_Delete.TabIndex = 19;
+            this.btn_Delete.Text = "Sil";
+            this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // cmb_Category
             // 
@@ -198,7 +251,7 @@
             // 
             // btn_Insert
             // 
-            this.btn_Insert.Location = new System.Drawing.Point(160, 262);
+            this.btn_Insert.Location = new System.Drawing.Point(175, 391);
             this.btn_Insert.Name = "btn_Insert";
             this.btn_Insert.Size = new System.Drawing.Size(114, 46);
             this.btn_Insert.TabIndex = 5;
@@ -224,6 +277,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btn_SearchByUser);
             this.tabPage2.Controls.Add(this.lbl_CategoryS);
             this.tabPage2.Controls.Add(this.lbl_Prices);
             this.tabPage2.Controls.Add(this.lbl_CountS);
@@ -238,150 +292,40 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(780, 379);
+            this.tabPage2.Size = new System.Drawing.Size(1154, 471);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Search";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
-            // btnUpdate
+            // btn_SearchByUser
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(299, 262);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(114, 46);
-            this.btnUpdate.TabIndex = 17;
-            this.btnUpdate.Text = "Dəyişin";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btn_SearchByUser.Location = new System.Drawing.Point(213, 364);
+            this.btn_SearchByUser.Name = "btn_SearchByUser";
+            this.btn_SearchByUser.Size = new System.Drawing.Size(114, 46);
+            this.btn_SearchByUser.TabIndex = 33;
+            this.btn_SearchByUser.Text = "Axtar";
+            this.btn_SearchByUser.UseVisualStyleBackColor = true;
+            this.btn_SearchByUser.Visible = false;
+            this.btn_SearchByUser.Click += new System.EventHandler(this.btn_SearchByUser_Click);
             // 
-            // rtb_Description
+            // lbl_CategoryS
             // 
-            this.rtb_Description.Location = new System.Drawing.Point(466, 208);
-            this.rtb_Description.Name = "rtb_Description";
-            this.rtb_Description.Size = new System.Drawing.Size(254, 112);
-            this.rtb_Description.TabIndex = 19;
-            this.rtb_Description.Text = "";
+            this.lbl_CategoryS.AutoSize = true;
+            this.lbl_CategoryS.Location = new System.Drawing.Point(38, 252);
+            this.lbl_CategoryS.Name = "lbl_CategoryS";
+            this.lbl_CategoryS.Size = new System.Drawing.Size(84, 20);
+            this.lbl_CategoryS.TabIndex = 32;
+            this.lbl_CategoryS.Text = "Kateqoriya";
             // 
-            // btn_Delete
+            // lbl_Prices
             // 
-            this.btn_Delete.Location = new System.Drawing.Point(503, 97);
-            this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(114, 46);
-            this.btn_Delete.TabIndex = 19;
-            this.btn_Delete.Text = "Sil";
-            this.btn_Delete.UseVisualStyleBackColor = true;
-            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
-            // 
-            // btn_ClearInput
-            // 
-            this.btn_ClearInput.Location = new System.Drawing.Point(503, 40);
-            this.btn_ClearInput.Name = "btn_ClearInput";
-            this.btn_ClearInput.Size = new System.Drawing.Size(156, 46);
-            this.btn_ClearInput.TabIndex = 20;
-            this.btn_ClearInput.Text = "Xanaları Təmizlə";
-            this.btn_ClearInput.UseVisualStyleBackColor = true;
-            this.btn_ClearInput.Click += new System.EventHandler(this.btn_ClearInput_Click);
-            // 
-            // btn_Buy
-            // 
-            this.btn_Buy.Location = new System.Drawing.Point(556, 268);
-            this.btn_Buy.Name = "btn_Buy";
-            this.btn_Buy.Size = new System.Drawing.Size(244, 46);
-            this.btn_Buy.TabIndex = 20;
-            this.btn_Buy.Text = "Al";
-            this.btn_Buy.UseVisualStyleBackColor = true;
-            this.btn_Buy.Click += new System.EventHandler(this.btn_Buy_Click);
-            // 
-            // txb_SearchName
-            // 
-            this.txb_SearchName.Location = new System.Drawing.Point(818, 35);
-            this.txb_SearchName.Name = "txb_SearchName";
-            this.txb_SearchName.Size = new System.Drawing.Size(300, 26);
-            this.txb_SearchName.TabIndex = 21;
-            this.txb_SearchName.TextChanged += new System.EventHandler(this.txb_SearchName_TextChanged);
-            // 
-            // cmb_SearchCategory
-            // 
-            this.cmb_SearchCategory.FormattingEnabled = true;
-            this.cmb_SearchCategory.Location = new System.Drawing.Point(818, 96);
-            this.cmb_SearchCategory.Name = "cmb_SearchCategory";
-            this.cmb_SearchCategory.Size = new System.Drawing.Size(300, 28);
-            this.cmb_SearchCategory.TabIndex = 22;
-            this.cmb_SearchCategory.SelectedIndexChanged += new System.EventHandler(this.cmb_SearchCategory_SelectedIndexChanged);
-            // 
-            // btn_GetAll
-            // 
-            this.btn_GetAll.Location = new System.Drawing.Point(818, 144);
-            this.btn_GetAll.Name = "btn_GetAll";
-            this.btn_GetAll.Size = new System.Drawing.Size(114, 46);
-            this.btn_GetAll.TabIndex = 23;
-            this.btn_GetAll.Text = "Siyahı";
-            this.btn_GetAll.UseVisualStyleBackColor = true;
-            this.btn_GetAll.Click += new System.EventHandler(this.btn_GetAll_Click);
-            // 
-            // txb_SearchDetailName
-            // 
-            this.txb_SearchDetailName.Location = new System.Drawing.Point(213, 49);
-            this.txb_SearchDetailName.Name = "txb_SearchDetailName";
-            this.txb_SearchDetailName.Size = new System.Drawing.Size(300, 26);
-            this.txb_SearchDetailName.TabIndex = 22;
-            // 
-            // txb_UserId
-            // 
-            this.txb_UserId.Location = new System.Drawing.Point(213, 93);
-            this.txb_UserId.Name = "txb_UserId";
-            this.txb_UserId.Size = new System.Drawing.Size(300, 26);
-            this.txb_UserId.TabIndex = 23;
-            // 
-            // txbSerachCount
-            // 
-            this.txbSerachCount.Location = new System.Drawing.Point(213, 138);
-            this.txbSerachCount.Name = "txbSerachCount";
-            this.txbSerachCount.Size = new System.Drawing.Size(300, 26);
-            this.txbSerachCount.TabIndex = 25;
-            // 
-            // txbSearchPrice
-            // 
-            this.txbSearchPrice.Location = new System.Drawing.Point(213, 193);
-            this.txbSearchPrice.Name = "txbSearchPrice";
-            this.txbSearchPrice.Size = new System.Drawing.Size(300, 26);
-            this.txbSearchPrice.TabIndex = 26;
-            // 
-            // cmb_SearchDetail
-            // 
-            this.cmb_SearchDetail.FormattingEnabled = true;
-            this.cmb_SearchDetail.Location = new System.Drawing.Point(213, 244);
-            this.cmb_SearchDetail.Name = "cmb_SearchDetail";
-            this.cmb_SearchDetail.Size = new System.Drawing.Size(300, 28);
-            this.cmb_SearchDetail.TabIndex = 24;
-            // 
-            // btn_Search
-            // 
-            this.btn_Search.Location = new System.Drawing.Point(213, 302);
-            this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(114, 46);
-            this.btn_Search.TabIndex = 27;
-            this.btn_Search.Text = "Axtar";
-            this.btn_Search.UseVisualStyleBackColor = true;
-            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
-            // 
-            // lbl_Name
-            // 
-            this.lbl_Name.AutoSize = true;
-            this.lbl_Name.Location = new System.Drawing.Point(38, 51);
-            this.lbl_Name.Name = "lbl_Name";
-            this.lbl_Name.Size = new System.Drawing.Size(85, 20);
-            this.lbl_Name.TabIndex = 28;
-            this.lbl_Name.Text = "Məhsul adı";
-            // 
-            // lbl_UserIDS
-            // 
-            this.lbl_UserIDS.AutoSize = true;
-            this.lbl_UserIDS.Location = new System.Drawing.Point(6, 99);
-            this.lbl_UserIDS.Name = "lbl_UserIDS";
-            this.lbl_UserIDS.Size = new System.Drawing.Size(215, 20);
-            this.lbl_UserIDS.TabIndex = 29;
-            this.lbl_UserIDS.Text = "Məhsulu yerləşdirən istifadəçi";
+            this.lbl_Prices.AutoSize = true;
+            this.lbl_Prices.Location = new System.Drawing.Point(38, 193);
+            this.lbl_Prices.Name = "lbl_Prices";
+            this.lbl_Prices.Size = new System.Drawing.Size(58, 20);
+            this.lbl_Prices.TabIndex = 31;
+            this.lbl_Prices.Text = "Qiymət";
             // 
             // lbl_CountS
             // 
@@ -393,34 +337,151 @@
             this.lbl_CountS.Text = "Say";
             this.lbl_CountS.Click += new System.EventHandler(this.lbl_CountS_Click);
             // 
-            // lbl_Prices
+            // lbl_UserIDS
             // 
-            this.lbl_Prices.AutoSize = true;
-            this.lbl_Prices.Location = new System.Drawing.Point(38, 193);
-            this.lbl_Prices.Name = "lbl_Prices";
-            this.lbl_Prices.Size = new System.Drawing.Size(58, 20);
-            this.lbl_Prices.TabIndex = 31;
-            this.lbl_Prices.Text = "Qiymət";
+            this.lbl_UserIDS.AutoSize = true;
+            this.lbl_UserIDS.Location = new System.Drawing.Point(6, 99);
+            this.lbl_UserIDS.Name = "lbl_UserIDS";
+            this.lbl_UserIDS.Size = new System.Drawing.Size(215, 20);
+            this.lbl_UserIDS.TabIndex = 29;
+            this.lbl_UserIDS.Text = "Məhsulu yerləşdirən istifadəçi";
             // 
-            // lbl_CategoryS
+            // lbl_Name
             // 
-            this.lbl_CategoryS.AutoSize = true;
-            this.lbl_CategoryS.Location = new System.Drawing.Point(38, 252);
-            this.lbl_CategoryS.Name = "lbl_CategoryS";
-            this.lbl_CategoryS.Size = new System.Drawing.Size(84, 20);
-            this.lbl_CategoryS.TabIndex = 32;
-            this.lbl_CategoryS.Text = "Kateqoriya";
+            this.lbl_Name.AutoSize = true;
+            this.lbl_Name.Location = new System.Drawing.Point(38, 51);
+            this.lbl_Name.Name = "lbl_Name";
+            this.lbl_Name.Size = new System.Drawing.Size(85, 20);
+            this.lbl_Name.TabIndex = 28;
+            this.lbl_Name.Text = "Məhsul adı";
+            // 
+            // btn_Search
+            // 
+            this.btn_Search.Location = new System.Drawing.Point(213, 302);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(114, 46);
+            this.btn_Search.TabIndex = 27;
+            this.btn_Search.Text = "Axtar";
+            this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+            // 
+            // cmb_SearchDetail
+            // 
+            this.cmb_SearchDetail.FormattingEnabled = true;
+            this.cmb_SearchDetail.Location = new System.Drawing.Point(213, 244);
+            this.cmb_SearchDetail.Name = "cmb_SearchDetail";
+            this.cmb_SearchDetail.Size = new System.Drawing.Size(300, 28);
+            this.cmb_SearchDetail.TabIndex = 24;
+            // 
+            // txbSearchPrice
+            // 
+            this.txbSearchPrice.Location = new System.Drawing.Point(213, 193);
+            this.txbSearchPrice.Name = "txbSearchPrice";
+            this.txbSearchPrice.Size = new System.Drawing.Size(300, 26);
+            this.txbSearchPrice.TabIndex = 26;
+            // 
+            // txbSerachCount
+            // 
+            this.txbSerachCount.Location = new System.Drawing.Point(213, 138);
+            this.txbSerachCount.Name = "txbSerachCount";
+            this.txbSerachCount.Size = new System.Drawing.Size(300, 26);
+            this.txbSerachCount.TabIndex = 25;
+            // 
+            // txb_UserId
+            // 
+            this.txb_UserId.Location = new System.Drawing.Point(213, 93);
+            this.txb_UserId.Name = "txb_UserId";
+            this.txb_UserId.Size = new System.Drawing.Size(300, 26);
+            this.txb_UserId.TabIndex = 23;
+            // 
+            // txb_SearchDetailName
+            // 
+            this.txb_SearchDetailName.Location = new System.Drawing.Point(213, 49);
+            this.txb_SearchDetailName.Name = "txb_SearchDetailName";
+            this.txb_SearchDetailName.Size = new System.Drawing.Size(300, 26);
+            this.txb_SearchDetailName.TabIndex = 22;
+            // 
+            // btn_Buy
+            // 
+            this.btn_Buy.Location = new System.Drawing.Point(806, 101);
+            this.btn_Buy.Name = "btn_Buy";
+            this.btn_Buy.Size = new System.Drawing.Size(244, 46);
+            this.btn_Buy.TabIndex = 20;
+            this.btn_Buy.Text = "Al";
+            this.btn_Buy.UseVisualStyleBackColor = true;
+            this.btn_Buy.Click += new System.EventHandler(this.btn_Buy_Click);
+            // 
+            // txb_SearchName
+            // 
+            this.txb_SearchName.Location = new System.Drawing.Point(943, 37);
+            this.txb_SearchName.Name = "txb_SearchName";
+            this.txb_SearchName.Size = new System.Drawing.Size(177, 26);
+            this.txb_SearchName.TabIndex = 21;
+            this.txb_SearchName.TextChanged += new System.EventHandler(this.txb_SearchName_TextChanged);
+            // 
+            // cmb_SearchCategory
+            // 
+            this.cmb_SearchCategory.FormattingEnabled = true;
+            this.cmb_SearchCategory.Location = new System.Drawing.Point(1156, 35);
+            this.cmb_SearchCategory.Name = "cmb_SearchCategory";
+            this.cmb_SearchCategory.Size = new System.Drawing.Size(177, 28);
+            this.cmb_SearchCategory.TabIndex = 22;
+            this.cmb_SearchCategory.SelectedIndexChanged += new System.EventHandler(this.cmb_SearchCategory_SelectedIndexChanged);
+            // 
+            // btn_GetAll
+            // 
+            this.btn_GetAll.Location = new System.Drawing.Point(806, 37);
+            this.btn_GetAll.Name = "btn_GetAll";
+            this.btn_GetAll.Size = new System.Drawing.Size(126, 46);
+            this.btn_GetAll.TabIndex = 23;
+            this.btn_GetAll.Text = "Siyahı";
+            this.btn_GetAll.UseVisualStyleBackColor = true;
+            this.btn_GetAll.Click += new System.EventHandler(this.btn_GetAll_Click);
+            // 
+            // cmb_SearchByUserCategory
+            // 
+            this.cmb_SearchByUserCategory.FormattingEnabled = true;
+            this.cmb_SearchByUserCategory.Location = new System.Drawing.Point(1156, 67);
+            this.cmb_SearchByUserCategory.Name = "cmb_SearchByUserCategory";
+            this.cmb_SearchByUserCategory.Size = new System.Drawing.Size(177, 28);
+            this.cmb_SearchByUserCategory.TabIndex = 25;
+            this.cmb_SearchByUserCategory.Visible = false;
+            this.cmb_SearchByUserCategory.SelectedIndexChanged += new System.EventHandler(this.cmb_SearchByUserCategory_SelectedIndexChanged);
+            // 
+            // txb_SearchNameByUSer
+            // 
+            this.txb_SearchNameByUSer.Location = new System.Drawing.Point(943, 69);
+            this.txb_SearchNameByUSer.Name = "txb_SearchNameByUSer";
+            this.txb_SearchNameByUSer.Size = new System.Drawing.Size(177, 26);
+            this.txb_SearchNameByUSer.TabIndex = 24;
+            this.txb_SearchNameByUSer.Visible = false;
+            this.txb_SearchNameByUSer.TextChanged += new System.EventHandler(this.txb_SearchNameByUSer_TextChanged);
+            // 
+            // btn_SearchUSers
+            // 
+            this.btn_SearchUSers.Location = new System.Drawing.Point(806, 153);
+            this.btn_SearchUSers.Name = "btn_SearchUSers";
+            this.btn_SearchUSers.Size = new System.Drawing.Size(126, 46);
+            this.btn_SearchUSers.TabIndex = 26;
+            this.btn_SearchUSers.Text = "Siyahı";
+            this.btn_SearchUSers.UseVisualStyleBackColor = true;
+            this.btn_SearchUSers.Visible = false;
+            this.btn_SearchUSers.Click += new System.EventHandler(this.btn_SearchUSers_Click);
             // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1345, 725);
+            this.ClientSize = new System.Drawing.Size(1345, 807);
+            this.Controls.Add(this.btn_SearchUSers);
+            this.Controls.Add(this.cmb_SearchByUserCategory);
+            this.Controls.Add(this.txb_SearchNameByUSer);
             this.Controls.Add(this.btn_GetAll);
             this.Controls.Add(this.cmb_SearchCategory);
             this.Controls.Add(this.txb_SearchName);
             this.Controls.Add(this.btn_Buy);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dgw_ProductTable);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ProductForm";
@@ -475,5 +536,10 @@
         private System.Windows.Forms.Label lbl_CountS;
         private System.Windows.Forms.Label lbl_CategoryS;
         private System.Windows.Forms.Label lbl_Prices;
+        private System.Windows.Forms.Label lbl_rct;
+        private System.Windows.Forms.Button btn_SearchByUser;
+        private System.Windows.Forms.ComboBox cmb_SearchByUserCategory;
+        private System.Windows.Forms.TextBox txb_SearchNameByUSer;
+        private System.Windows.Forms.Button btn_SearchUSers;
     }
 }

@@ -7,13 +7,13 @@ namespace WindowsProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class dsjd : IMigrationMetadata
+    public sealed partial class s : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(dsjd));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(s));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102050610475_dsjd"; }
+            get { return "202102072016183_s"; }
         }
         
         string IMigrationMetadata.Source

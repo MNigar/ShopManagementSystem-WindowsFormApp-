@@ -14,8 +14,9 @@ namespace WindowsProject.Models
         {
            
             LogProduct = new List<LogProduct>();
+            Consumers = new List<Consumer>();
 
-          
+
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -30,10 +31,10 @@ namespace WindowsProject.Models
         public int Count { get; set; }
         public int Status { get; set; }
         public int SoldedCount { get; set; }
-        public int SoldedTotal { get; set; }      
+        public decimal SoldedTotal { get; set; }      
         public List<LogProduct> LogProduct { get; set; }
 
-
+        public List<Consumer> Consumers { get; set; }
 
     }
 }

@@ -31,23 +31,19 @@ namespace WindowsProject.Controls
         {
             this.btn_DeleteCategory = new System.Windows.Forms.Button();
             this.btn_GetAll = new System.Windows.Forms.Button();
-            this.grb_CategoryEdit = new System.Windows.Forms.GroupBox();
             this.btn_Update = new System.Windows.Forms.Button();
-            this.lbl_UpdateName = new System.Windows.Forms.Label();
-            this.txb_UpdateName = new System.Windows.Forms.TextBox();
             this.dgw_Table = new System.Windows.Forms.DataGridView();
             this.grb_Categoriya = new System.Windows.Forms.GroupBox();
             this.btn_Insert = new System.Windows.Forms.Button();
             this.lbl_Name = new System.Windows.Forms.Label();
             this.txb_Name = new System.Windows.Forms.TextBox();
-            this.grb_CategoryEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_Table)).BeginInit();
             this.grb_Categoriya.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_DeleteCategory
             // 
-            this.btn_DeleteCategory.Location = new System.Drawing.Point(920, 103);
+            this.btn_DeleteCategory.Location = new System.Drawing.Point(782, 85);
             this.btn_DeleteCategory.Name = "btn_DeleteCategory";
             this.btn_DeleteCategory.Size = new System.Drawing.Size(75, 62);
             this.btn_DeleteCategory.TabIndex = 14;
@@ -57,24 +53,13 @@ namespace WindowsProject.Controls
             // 
             // btn_GetAll
             // 
-            this.btn_GetAll.Location = new System.Drawing.Point(809, 103);
+            this.btn_GetAll.Location = new System.Drawing.Point(701, 85);
             this.btn_GetAll.Name = "btn_GetAll";
             this.btn_GetAll.Size = new System.Drawing.Size(75, 62);
             this.btn_GetAll.TabIndex = 13;
             this.btn_GetAll.Text = "Siyahı";
             this.btn_GetAll.UseVisualStyleBackColor = true;
             this.btn_GetAll.Click += new System.EventHandler(this.btn_GetAll_Click);
-            // 
-            // grb_CategoryEdit
-            // 
-            this.grb_CategoryEdit.Controls.Add(this.lbl_UpdateName);
-            this.grb_CategoryEdit.Controls.Add(this.txb_UpdateName);
-            this.grb_CategoryEdit.Location = new System.Drawing.Point(603, 261);
-            this.grb_CategoryEdit.Name = "grb_CategoryEdit";
-            this.grb_CategoryEdit.Size = new System.Drawing.Size(464, 185);
-            this.grb_CategoryEdit.TabIndex = 12;
-            this.grb_CategoryEdit.TabStop = false;
-            this.grb_CategoryEdit.Text = "Kateqoriya";
             // 
             // btn_Update
             // 
@@ -85,22 +70,6 @@ namespace WindowsProject.Controls
             this.btn_Update.Text = "Dəyişin";
             this.btn_Update.UseVisualStyleBackColor = true;
             this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
-            // 
-            // lbl_UpdateName
-            // 
-            this.lbl_UpdateName.AutoSize = true;
-            this.lbl_UpdateName.Location = new System.Drawing.Point(8, 52);
-            this.lbl_UpdateName.Name = "lbl_UpdateName";
-            this.lbl_UpdateName.Size = new System.Drawing.Size(111, 20);
-            this.lbl_UpdateName.TabIndex = 0;
-            this.lbl_UpdateName.Text = "Kateqoriya Adı";
-            // 
-            // txb_UpdateName
-            // 
-            this.txb_UpdateName.Location = new System.Drawing.Point(147, 52);
-            this.txb_UpdateName.Name = "txb_UpdateName";
-            this.txb_UpdateName.Size = new System.Drawing.Size(300, 26);
-            this.txb_UpdateName.TabIndex = 1;
             // 
             // dgw_Table
             // 
@@ -160,13 +129,11 @@ namespace WindowsProject.Controls
             this.ClientSize = new System.Drawing.Size(1325, 723);
             this.Controls.Add(this.btn_DeleteCategory);
             this.Controls.Add(this.btn_GetAll);
-            this.Controls.Add(this.grb_CategoryEdit);
             this.Controls.Add(this.dgw_Table);
             this.Controls.Add(this.grb_Categoriya);
             this.Name = "CategoryForm";
             this.Text = "CategoryForm";
-            this.grb_CategoryEdit.ResumeLayout(false);
-            this.grb_CategoryEdit.PerformLayout();
+            this.Load += new System.EventHandler(this.CategoryForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgw_Table)).EndInit();
             this.grb_Categoriya.ResumeLayout(false);
             this.grb_Categoriya.PerformLayout();
@@ -178,10 +145,7 @@ namespace WindowsProject.Controls
 
         private System.Windows.Forms.Button btn_DeleteCategory;
         private System.Windows.Forms.Button btn_GetAll;
-        private System.Windows.Forms.GroupBox grb_CategoryEdit;
         private System.Windows.Forms.Button btn_Update;
-        private System.Windows.Forms.Label lbl_UpdateName;
-        private System.Windows.Forms.TextBox txb_UpdateName;
         private System.Windows.Forms.DataGridView dgw_Table;
         private System.Windows.Forms.GroupBox grb_Categoriya;
         private System.Windows.Forms.Button btn_Insert;

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsProject.Controls;
 using WindowsProject.DataBaseContext;
 
 namespace WindowsProject
@@ -24,7 +25,7 @@ namespace WindowsProject
             productForm.Actions();
 
             productForm.Show();
-
+           
 
         }
         public delegate void delPassData(TextBox text);
@@ -68,7 +69,9 @@ namespace WindowsProject
             productForm1.GetProductInsertedByUser();
             productForm1.ButtonAction();
             productForm1.Show();
-
+            productForm1.SearchR();
+            productForm1.SearchtextBox();
+            productForm1.btn();
         }
 
         private void btn_Report_Click(object sender, EventArgs e)
@@ -79,6 +82,13 @@ namespace WindowsProject
             int userid = Convert.ToInt32(textBox1.Text);
             reportForm.ReportForUser(userid);
             reportForm.Show();
+
+        }
+
+        private void btn_Category_Click(object sender, EventArgs e)
+        {
+            CategoryForm categoryForm = new CategoryForm();
+            categoryForm.Show();
 
         }
     }

@@ -27,10 +27,15 @@ namespace WindowsProject
            
         }
         private Form _loginForm;
+        //public RegistrationForm(Form form) : this()
+        //{
+        //    _loginForm = form;
+        //}
         public RegistrationForm(Form form) : this()
         {
             _loginForm = form;
         }
+
         public RegistrationForm(IUserRepository i) : this()
         {
           
@@ -73,8 +78,10 @@ namespace WindowsProject
 
                         repository.Insert(user);
                         repository.Save();
-                        login.Show();
+                        MessageBox.Show("Ugurlu");
                         //this.Close();
+                       
+                        this.Close();
                     }
                     else
                     { MessageBox.Show("Bu istifadeci movcuddur"); }
@@ -93,10 +100,11 @@ namespace WindowsProject
 
         }
 
-        private void lbl_Login_Click(object sender, EventArgs e)
+        private void btn_Login_Click(object sender, EventArgs e)
         {
-            
-            login.Show();
+            LoginForm loginControl = new LoginForm();
+            loginControl.ShowDialog();
+            this.Close();
         }
     }
 }

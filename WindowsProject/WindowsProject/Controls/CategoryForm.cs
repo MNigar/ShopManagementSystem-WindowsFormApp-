@@ -59,14 +59,22 @@ namespace WindowsProject.Controls
             using (ShopManagementContext context = new ShopManagementContext())
             {
                 repository = new CategoryRepository(context);
-                Category book = new Category()
+                if (String.IsNullOrEmpty(txb_Name.Text))
                 {
-                    Id = Convert.ToInt32(dgw_Table.CurrentRow.Cells[0].Value),
-                    Name = txb_Name.Text,
-                };
-                repository.Update(book);
-                repository.Save();
-                GetAll();
+                    MessageBox
+                        .Show("KAtegoriya adi daxil edin");
+                }
+                else
+                {
+                    Category book = new Category()
+                    {
+                        Id = Convert.ToInt32(dgw_Table.CurrentRow.Cells[0].Value),
+                        Name = txb_Name.Text,
+                    };
+                    repository.Update(book);
+                    repository.Save();
+                    GetAll();
+                }
             }
         }
 
@@ -103,6 +111,11 @@ namespace WindowsProject.Controls
         private void dgw_Table_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txb_Name.Text = dgw_Table.CurrentRow.Cells[1].Value.ToString();
+
+        }
+
+        private void CategoryForm_Load(object sender, EventArgs e)
+        {
 
         }
     }

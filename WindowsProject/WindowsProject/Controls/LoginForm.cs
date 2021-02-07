@@ -22,9 +22,7 @@ namespace WindowsProject
         IUserRepository repository;
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            
-
-
+         
         }
         public delegate void delPassData(TextBox text);
         public static class LoginInfo
@@ -38,6 +36,8 @@ namespace WindowsProject
             RegistrationForm registration = new RegistrationForm(this);
 
             registration.ShowDialog();
+            
+            
         }
 
         private void btn_Login_Click(object sender, EventArgs e)

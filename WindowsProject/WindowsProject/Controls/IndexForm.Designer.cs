@@ -50,22 +50,24 @@
             // lbl_UserId
             // 
             this.lbl_UserId.AutoSize = true;
-            this.lbl_UserId.Location = new System.Drawing.Point(114, 377);
+            this.lbl_UserId.Location = new System.Drawing.Point(28, 550);
             this.lbl_UserId.Name = "lbl_UserId";
             this.lbl_UserId.Size = new System.Drawing.Size(51, 20);
             this.lbl_UserId.TabIndex = 1;
             this.lbl_UserId.Text = "label1";
+            this.lbl_UserId.Visible = false;
             this.lbl_UserId.Click += new System.EventHandler(this.lbl_UserId_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(118, 417);
+            this.textBox1.Location = new System.Drawing.Point(32, 590);
             this.textBox1.MaxLength = 20;
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '*';
             this.textBox1.Size = new System.Drawing.Size(240, 26);
             this.textBox1.TabIndex = 23;
             this.textBox1.UseWaitCursor = true;
+            this.textBox1.Visible = false;
             // 
             // btn_Report
             // 
@@ -98,6 +100,7 @@
             this.btn_Category.TabIndex = 26;
             this.btn_Category.Text = "Kateqoriyalar";
             this.btn_Category.UseVisualStyleBackColor = true;
+            this.btn_Category.Click += new System.EventHandler(this.btn_Category_Click);
             // 
             // IndexForm
             // 
