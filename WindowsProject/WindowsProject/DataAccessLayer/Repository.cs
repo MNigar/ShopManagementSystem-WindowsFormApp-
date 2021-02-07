@@ -45,14 +45,17 @@ namespace WindowsProject.DataAccessLayer
             //entities.Add(item);
             //context.SaveChanges();
             context.Set<T>().Add(item);
+   
+        }
+        public void Save()
+        {
             context.SaveChanges();
         }
-
         public void Update(T item)
         {
             var entity = context.Entry(item);
             entity.State = System.Data.Entity.EntityState.Modified;
-            context.SaveChanges();
+         
         }
     }
 }

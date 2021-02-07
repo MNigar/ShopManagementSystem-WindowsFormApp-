@@ -72,6 +72,7 @@ namespace WindowsProject
 
 
                         repository.Insert(user);
+                        repository.Save();
                         login.Show();
                         //this.Close();
                     }

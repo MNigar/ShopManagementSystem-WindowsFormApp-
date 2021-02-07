@@ -14,6 +14,7 @@ namespace WindowsProject.Models
         {
            
             LogProduct = new List<LogProduct>();
+
           
         }
         [Key]
@@ -29,7 +30,7 @@ namespace WindowsProject.Models
         public int Count { get; set; }
         public int Status { get; set; }
         public int SoldedCount { get; set; }
-        public int SoldedTotal { get; set; }
+        public int SoldedTotal { get; set; }      
         public List<LogProduct> LogProduct { get; set; }
 
 

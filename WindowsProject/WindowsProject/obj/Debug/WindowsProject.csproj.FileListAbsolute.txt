@@ -48,7 +48,6 @@ D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsPr
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.csproj.CopyComplete
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.exe
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.pdb
-D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.CategoryForm.resources
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.add.resources
 D:\COVID1904\WinformFinalProject\pr\WindowsProject\WindowsProject\obj\Debug\WindowsProject.CategoryForm.resources
 D:\COVID1904\WinformFinalProject\pr\WindowsProject\WindowsProject\bin\Debug\Autofac.dll
@@ -100,6 +99,8 @@ D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsPr
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.adddds.resources
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.dsjd.resources
 D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.ProductForm.resources
-D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.hh.resources
-D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.hhddlm.resources
-D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.hhddlmkk.resources
+D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.ReportForm.resources
+D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Controls.CategoryForm.resources
+D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.addcustomer.resources
+D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.addcustomerl.resources
+D:\C#course\WindowsFormProject\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.addcustomerlo.resources

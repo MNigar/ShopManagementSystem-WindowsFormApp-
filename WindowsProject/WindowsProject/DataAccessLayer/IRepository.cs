@@ -12,6 +12,7 @@ namespace WindowsProject.DataAccessLayer
         List<T> GetAll();
         T GetById(int id);
         void Insert(T item);
+        void Save();
         void Update(T item);
         void Delete(int item);
    

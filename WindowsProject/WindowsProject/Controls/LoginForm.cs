@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsProject.Controls;
 using WindowsProject.DataBaseContext;
 using WindowsProject.DatabaseRep;
 
@@ -52,22 +53,28 @@ namespace WindowsProject
                 //    && userList.Any(user=> user.Email.ToLower()==txb_Email.Text.ToLower() && user.Password == txb_Password.Text))
                 if (result)
                 {
-                    if (user.RoleId == 2)
+                    if (user.RoleId == 1)
                     {
                        
                         textBox1.Text = Convert.ToString(user.Id);
 
-                        CategoryForm categoryForm = new CategoryForm();
                 
-
-                      
-                        delPassData del = new delPassData(categoryForm.funData);
+                        IndexForm index = new IndexForm();
+                        CategoryForm form = new CategoryForm();
+                        delPassData del = new delPassData(index.funData);
                         del(this.textBox1);
-                        categoryForm.Show();
+                        index.Show();
                     }
                     else
                     {
-                        MessageBox.Show("Welcome");
+                        textBox1.Text = Convert.ToString(user.Id);
+
+                       
+                        IndexForm index = new IndexForm();
+                        CategoryForm form = new CategoryForm();
+                        delPassData del = new delPassData(index.funData);
+                        del(this.textBox1);
+                        index.Show();
                     }
                 }
                 else
