@@ -38,8 +38,20 @@ namespace WindowsProject
         }
         private void ReportForm_Load(object sender, EventArgs e)
         {
-            int userid = Convert.ToInt32(lbl_UserId.Text);
-            ReportForUser( userid);
+            using (ShopManagementContext context = new ShopManagementContext())
+            {
+                int userid = Convert.ToInt32(lbl_UserId.Text);
+                var user = context.Users.Where(u => u.Id == userid).FirstOrDefault();
+
+                if (user.RoleId == (int)Enums.Role.User)
+                {
+                    lbl_Prices.Visible = false;
+                    txbSearchPrice.Visible = false;
+                    lbl_Status.Visible = false;
+                    textBStatus.Visible = false;
+                }
+                ReportForUser(userid);
+            }
         }
         public void funData(TextBox txtForm1)
         {
@@ -218,7 +230,7 @@ namespace WindowsProject
 
                              }).Distinct().ToList();
 
-
+                
                     if (!String.IsNullOrEmpty(txb_SearchDetailName.Text))
                     {
                         u = u.Where(x => x.Name.Contains(txb_SearchDetailName.Text)).ToList();
@@ -233,7 +245,7 @@ namespace WindowsProject
                     }
                     if (!String.IsNullOrEmpty(cmb_SearchDetail.Text))
                     {
-                        u = u.Where(x => x.Category == cmb_SearchDetail.Text.Split('.')[1]).ToList();
+                        u = u.Where(x => x.Category == cmb_SearchDetail.Text.Split('.')[0]).ToList();
                     }
                     if (!String.IsNullOrEmpty(txb_UserId.Text))
                     {

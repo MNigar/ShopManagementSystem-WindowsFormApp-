@@ -43,7 +43,7 @@ namespace WindowsProject
             this.txb_UserId = new System.Windows.Forms.TextBox();
             this.txb_SearchDetailName = new System.Windows.Forms.TextBox();
             this.lbl_Status = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBStatus = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_Reporttable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +86,6 @@ namespace WindowsProject
             this.lbl_Prices.Size = new System.Drawing.Size(58, 20);
             this.lbl_Prices.TabIndex = 53;
             this.lbl_Prices.Text = "Qiymət";
-         
             // 
             // lbl_CountS
             // 
@@ -96,7 +95,6 @@ namespace WindowsProject
             this.lbl_CountS.Size = new System.Drawing.Size(36, 20);
             this.lbl_CountS.TabIndex = 52;
             this.lbl_CountS.Text = "Say";
-          
             // 
             // lbl_UserIDS
             // 
@@ -176,12 +174,12 @@ namespace WindowsProject
             this.lbl_Status.TabIndex = 56;
             this.lbl_Status.Text = "Satatus";
             // 
-            // textBox1
+            // textBStatus
             // 
-            this.textBox1.Location = new System.Drawing.Point(1011, 306);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(300, 26);
-            this.textBox1.TabIndex = 55;
+            this.textBStatus.Location = new System.Drawing.Point(1011, 306);
+            this.textBStatus.Name = "textBStatus";
+            this.textBStatus.Size = new System.Drawing.Size(300, 26);
+            this.textBStatus.TabIndex = 55;
             // 
             // ReportForm
             // 
@@ -189,7 +187,7 @@ namespace WindowsProject
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1407, 584);
             this.Controls.Add(this.lbl_Status);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBStatus);
             this.Controls.Add(this.lbl_CategoryS);
             this.Controls.Add(this.lbl_Prices);
             this.Controls.Add(this.lbl_CountS);
@@ -228,6 +226,6 @@ namespace WindowsProject
         private System.Windows.Forms.TextBox txb_UserId;
         private System.Windows.Forms.TextBox txb_SearchDetailName;
         private System.Windows.Forms.Label lbl_Status;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBStatus;
     }
 }
