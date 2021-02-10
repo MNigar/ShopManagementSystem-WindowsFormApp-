@@ -7,13 +7,13 @@ namespace WindowsProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class ss : IMigrationMetadata
+    public sealed partial class addfs : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ss));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addfs));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102072036333_ss"; }
+            get { return "202102101140073_addfs"; }
         }
         
         string IMigrationMetadata.Source

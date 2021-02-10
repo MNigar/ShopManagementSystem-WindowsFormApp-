@@ -114,21 +114,13 @@
     </Compile>
     <Compile Include="Enums\Role.cs" />
     <Compile Include="Enums\Status.cs" />
-    <Compile Include="Migrations\202102072016183_s.cs" />
-    <Compile Include="Migrations\202102072016183_s.designer.cs">
-      <DependentUpon>202102072016183_s.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102072036333_ss.cs" />
-    <Compile Include="Migrations\202102072036333_ss.designer.cs">
-      <DependentUpon>202102072036333_ss.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102072057129_sss.cs" />
-    <Compile Include="Migrations\202102072057129_sss.designer.cs">
-      <DependentUpon>202102072057129_sss.cs</DependentUpon>
+    <Compile Include="Migrations\202102101140073_addfs.cs" />
+    <Compile Include="Migrations\202102101140073_addfs.designer.cs">
+      <DependentUpon>202102101140073_addfs.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Consumer.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\LogProduct.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Role.cs" />
@@ -165,14 +157,8 @@
     <EmbeddedResource Include="Controls\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102072016183_s.resx">
-      <DependentUpon>202102072016183_s.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102072036333_ss.resx">
-      <DependentUpon>202102072036333_ss.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102072057129_sss.resx">
-      <DependentUpon>202102072057129_sss.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102101140073_addfs.resx">
+      <DependentUpon>202102101140073_addfs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

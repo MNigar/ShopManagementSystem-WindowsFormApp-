@@ -14,7 +14,7 @@ namespace WindowsProject.Models
         {
             Products = new List<Product>();
             LogProduct = new List<LogProduct>();
-            Customers = new List<Consumer>();
+            Customers = new List<Customer>();
             
         }
         public int Id { get; set; }
@@ -29,7 +29,7 @@ namespace WindowsProject.Models
         public int RoleId { get; set; }
         public List<Product> Products { get; set; }
         public List<LogProduct> LogProduct { get; set; }
-        public List<Consumer> Customers { get; set; }
+        public List<Customer> Customers { get; set; }
 
 
     }

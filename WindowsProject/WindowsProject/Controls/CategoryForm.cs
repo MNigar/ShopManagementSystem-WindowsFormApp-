@@ -15,50 +15,43 @@ namespace WindowsProject.Controls
 {
     public partial class CategoryForm : Form
     {
+        private readonly ICategoryRepository _repository;
+       
         public CategoryForm()
         {
             InitializeComponent();
-            GetAll();
-          
+
+            ShopManagementContext context = new ShopManagementContext();
+            _repository = new CategoryRepository(context);
+
+
         }
-        ICategoryRepository repository;
-
-
-
-        
-
-
-        private void GetAll()
+      
+            private void GetAll()
         {
-            using (ShopManagementContext context = new ShopManagementContext())
-            {
-                repository = new CategoryRepository(context);
-                var query = repository.GetAll();
+            
+            
+                var query = _repository.GetAll();
                 var t = query.Where(y => y.Status == 0).ToList();
                 dgw_Table.DataSource = t;
-            }
+            
         }
         private void btn_Insert_Click_1(object sender, EventArgs e)
         {
-            using (ShopManagementContext context = new ShopManagementContext())
-            {
-                repository = new CategoryRepository(context);
-                Category category = new Category()
+              Category category = new Category()
                 {
                     Name = txb_Name.Text,
                     Status = 0
                 };
-                repository.Insert(category);
-                repository.Save();
+               _repository.Insert(category);
+               _repository.Save();
                 GetAll();
-            }
+            
         }
 
         private void btn_Update_Click(object sender, EventArgs e)
         {
-            using (ShopManagementContext context = new ShopManagementContext())
-            {
-                repository = new CategoryRepository(context);
+           
                 if (String.IsNullOrEmpty(txb_Name.Text))
                 {
                     MessageBox
@@ -71,18 +64,16 @@ namespace WindowsProject.Controls
                         Id = Convert.ToInt32(dgw_Table.CurrentRow.Cells[0].Value),
                         Name = txb_Name.Text,
                     };
-                    repository.Update(book);
-                    repository.Save();
+                    _repository.Update(book);
+                    _repository.Save();
                     GetAll();
-                }
+                
             }
         }
 
         private void btn_DeleteCategory_Click(object sender, EventArgs e)
         {
-            using (ShopManagementContext context = new ShopManagementContext())
-            {
-                repository = new CategoryRepository(context);
+            
 
                 Category product = new Category()
                 {
@@ -92,10 +83,10 @@ namespace WindowsProject.Controls
 
                 };
 
-                repository.Update(product);
-                repository.Save();
+                _repository.Update(product);
+                _repository.Save();
                 GetAll();
-            }
+            
         }
 
         private void btn_GetAll_Click(object sender, EventArgs e)

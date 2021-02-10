@@ -65,16 +65,25 @@ namespace WindowsProject
                 user.CreatedDate = DateTime.Now;
                 user.Status = 0;
                 if (!string.IsNullOrEmpty(txb_Email.Text)
-               && Regex.IsMatch(txb_Email.Text, @"^[a-z0-9][-a-z0-9._]+@([-a-z0-9]+[.])+[a-z]{2,5}$")
                && !string.IsNullOrEmpty(txb_Name.Text)
                && !string.IsNullOrEmpty(txb_Surname.Text)
                && !string.IsNullOrEmpty(txb_PhoneNumber.Text)
-               && Regex.IsMatch(txb_PhoneNumber.Text, @"^([+994])+(50|55|51|77|70|99|10|60)+[0-9]{7}$")
-               && !string.IsNullOrEmpty(txb_Password.Text) && txb_Password.Text.Length > 8)
+               && !string.IsNullOrEmpty(txb_Password.Text))
                 {
                     if (! repository.IfAlreadyExist(user.Email, users))
                         {
-
+                         if( !Regex.IsMatch(txb_PhoneNumber.Text, @"^([+994])+(50|55|51|77|70|99|10|60)+[0-9]{7}$"))
+                        {
+                            MessageBox.Show("Telefon nömrəsinin formatı +994XXXXXXXXX olmalıdır");
+                        }
+                         if (!Regex.IsMatch(txb_Email.Text, @"^[a-z0-9][-a-z0-9._]+@([-a-z0-9]+[.])+[a-z]{2,5}$"))
+                        {
+                            MessageBox.Show("Email formatı example@gmail.com şəklində olmalıdır");
+                        }
+                         if(txb_Password.Text.Length < 8)
+                        {
+                            MessageBox.Show("Şifrə uzunluğu minimum 8 simvol olmalıdır");
+                        }
 
                         repository.Insert(user);
                         repository.Save();
@@ -88,7 +97,7 @@ namespace WindowsProject
                 }
                 else
                 {
-                    MessageBox.Show("Yalnish");
+                    MessageBox.Show("Xanaları doldurun");
                 }
                 
 

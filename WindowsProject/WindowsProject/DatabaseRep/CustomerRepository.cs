@@ -9,7 +9,7 @@ using WindowsProject.Models;
 
 namespace WindowsProject.DatabaseRep
 {
-    class CustomerRepository : Repository<Consumer>, ICustomerRepository
+    class CustomerRepository : Repository<Customer>, ICustomerRepository
     {
 
 

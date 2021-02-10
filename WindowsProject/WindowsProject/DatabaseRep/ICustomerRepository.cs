@@ -8,7 +8,7 @@ using WindowsProject.Models;
 
 namespace WindowsProject.DatabaseRep
 {
-    public interface ICustomerRepository : IRepository<Consumer>
+    public interface ICustomerRepository : IRepository<Customer>
     {
     }
 }

@@ -24,15 +24,26 @@ namespace WindowsProject
         ICustomerRepository repository;
 #pragma warning restore CS0169 // The field 'ReportForm.repository' is never used
         ICategoryRepository catrepository;
+        IUserRepository _userRepository;
         private void SetCategory()
         {
             using (ShopManagementContext context = new ShopManagementContext())
             {
                 catrepository = new CategoryRepository(context);
-                foreach (Category category in catrepository.GetAll())
+                _userRepository = new UserRepository(context);
+                var categorylist = catrepository.GetAll().Where(t => t.Status == 0);
+                foreach (Category category in categorylist)
                 {
                    
                     cmb_SearchDetail.Items.Add(category.Id + "." + category.Name);
+                   
+                }
+                var userlist= _userRepository.GetAll().Where(u=>u.RoleId!=(int)Enums.Role.Admin);
+                foreach (User user in userlist)
+                {
+                    cmb_UserSearch.Items.Add(user.Id + "." + user.Name );
+
+                        
                 }
             }
         }
@@ -68,11 +79,11 @@ namespace WindowsProject
                 {                     
                     var l = (from Product in context.Products
                             join Customer in context.Consumers on Product.Id equals Customer.ProductId
-                            where Product.CreatedUserId==userid
+                            where Product.UserId==userid
                             select new
                                   {
                                 Product.Name,
-                                Customer.UserId,
+                                Customer.CreatedUserId,
                                 User=Customer.User.Name,
                                 Customer.Count,
                                 Category=Product.Category.Name,
@@ -160,7 +171,7 @@ namespace WindowsProject
                                  Product.Name,
                                  Product.Id,
                                  Product.SoldedCount,
-                                 
+                                 Product.UserId,
                                  Product.Count,
                                  CategoryID = Product.Category.Name,
                                  Product.CategoryId,
@@ -175,10 +186,11 @@ namespace WindowsProject
                                  Product.Name,
                                  Product.Id,
                                  Product.SoldedCount,
+                                 Product.UserId,
                                  Product.Count,
                                  CategoryID=Product.Category.Name,
                                  Product.CategoryId,
-
+                          
                                  ModifiedUserID = "",
                                  Description = "",
                                  Status = ((Enums.Status)Product.Status).ToString()
@@ -200,9 +212,9 @@ namespace WindowsProject
                     {
                         u = u.Where(x => x.SoldedCount == Convert.ToInt32(txbSerachCount.Text)).ToList();
                     }
-                    if (!String.IsNullOrEmpty(txb_UserId.Text))
+                    if (!String.IsNullOrEmpty(cmb_UserSearch.Text))
                     {
-                        u = u.Where(x => x.ModifiedUserID == txb_UserId.Text).ToList();
+                        u = u.Where(x => x.UserId== Convert.ToInt32(cmb_UserSearch.Text.Split('.')[0])).ToList();
                     }
                     if (!String.IsNullOrEmpty(cmb_SearchDetail.Text))
                     {
@@ -216,11 +228,11 @@ namespace WindowsProject
                 {
                     var u= (from Product in context.Products
                              join Customer in context.Consumers on Product.Id equals Customer.ProductId
-                             where Product.CreatedUserId == userid
+                             where Product.UserId == userid
                              select new
                              {
                                  Product.Name,
-                                 Customer.UserId,
+                                 Customer.CreatedUserId,
                                  User = Customer.User.Name,
 
                                  Customer.Count,
@@ -235,21 +247,18 @@ namespace WindowsProject
                     {
                         u = u.Where(x => x.Name.Contains(txb_SearchDetailName.Text)).ToList();
                     }
-                    //if (!String.IsNullOrEmpty(txbSearchPrice.Text))
-                    //{
-                    //    u = u.Where(x => x. == Convert.ToDecimal(txbSearchPrice.Text)).ToList();
-                    //}
+
                     if (!String.IsNullOrEmpty(txbSerachCount.Text))
                     {
                         u = u.Where(x => x.Count == Convert.ToInt32(txbSerachCount.Text)).ToList();
                     }
                     if (!String.IsNullOrEmpty(cmb_SearchDetail.Text))
                     {
-                        u = u.Where(x => x.Category == cmb_SearchDetail.Text.Split('.')[0]).ToList();
+                        u = u.Where(x => x.CategoryId == Convert.ToInt32(cmb_SearchDetail.Text.Split('.')[0])).ToList();
                     }
-                    if (!String.IsNullOrEmpty(txb_UserId.Text))
+                    if (!String.IsNullOrEmpty(cmb_UserSearch.Text))
                     {
-                        u = u.Where(x => x.User == txb_UserId.Text).ToList();
+                        u = u.Where(x => x.CreatedUserId == Convert.ToInt32(cmb_UserSearch.Text.Split('.')[0])).ToList();
                     }
                     dgw_Reporttable.DataSource = u;
                 }
@@ -257,32 +266,24 @@ namespace WindowsProject
             }
         }
 
-            private void cmb_SearchDetail_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txbSearchPrice_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txbSerachCount_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txb_SearchDetailName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_CategoryS_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgw_Reporttable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btn_GetAllUser_Click(object sender, EventArgs e)
+        {   using(ShopManagementContext context=new ShopManagementContext())
+            {
+                int userid = Convert.ToInt32(lbl_UserId.Text);
+
+                var user = context.Users.Where(u => u.Id == userid).FirstOrDefault();
+                ReportForUser(userid);
+            }
+
+           
+        }
+
+        private void cmb_UserSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

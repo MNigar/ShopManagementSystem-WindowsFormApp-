@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class s : DbMigration
+    public partial class addfs : DbMigration
     {
         public override void Up()
         {
@@ -25,34 +25,34 @@
                         Name = c.String(),
                         CategoryId = c.Int(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        CreatedUserId = c.Int(nullable: false),
+                        UserId = c.Int(nullable: false),
                         PhoneNumber = c.String(),
                         Count = c.Int(nullable: false),
                         Status = c.Int(nullable: false),
                         SoldedCount = c.Int(nullable: false),
-                        SoldedTotal = c.Int(nullable: false),
-                        User_Id = c.Int(),
+                        SoldedTotal = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.User_Id)
+                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.CategoryId)
-                .Index(t => t.User_Id);
+                .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.Consumers",
+                "dbo.Customers",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        UserId = c.Int(nullable: false),
+                        CreatedUserId = c.Int(nullable: false),
                         ProductId = c.Int(nullable: false),
                         Count = c.Int(nullable: false),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         CreatedDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
+                .ForeignKey("dbo.Users", t => t.CreatedUserId)
+                .Index(t => t.CreatedUserId)
                 .Index(t => t.ProductId);
             
             CreateTable(
@@ -86,7 +86,7 @@
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.Users", t => t.UserId)
                 .Index(t => t.ProductId)
                 .Index(t => t.UserId);
             
@@ -104,23 +104,23 @@
         public override void Down()
         {
             DropForeignKey("dbo.Users", "RoleId", "dbo.Roles");
-            DropForeignKey("dbo.Products", "User_Id", "dbo.Users");
+            DropForeignKey("dbo.Products", "UserId", "dbo.Users");
             DropForeignKey("dbo.LogProducts", "UserId", "dbo.Users");
             DropForeignKey("dbo.LogProducts", "ProductId", "dbo.Products");
-            DropForeignKey("dbo.Consumers", "UserId", "dbo.Users");
-            DropForeignKey("dbo.Consumers", "ProductId", "dbo.Products");
+            DropForeignKey("dbo.Customers", "CreatedUserId", "dbo.Users");
+            DropForeignKey("dbo.Customers", "ProductId", "dbo.Products");
             DropForeignKey("dbo.Products", "CategoryId", "dbo.Categories");
             DropIndex("dbo.LogProducts", new[] { "UserId" });
             DropIndex("dbo.LogProducts", new[] { "ProductId" });
             DropIndex("dbo.Users", new[] { "RoleId" });
-            DropIndex("dbo.Consumers", new[] { "ProductId" });
-            DropIndex("dbo.Consumers", new[] { "UserId" });
-            DropIndex("dbo.Products", new[] { "User_Id" });
+            DropIndex("dbo.Customers", new[] { "ProductId" });
+            DropIndex("dbo.Customers", new[] { "CreatedUserId" });
+            DropIndex("dbo.Products", new[] { "UserId" });
             DropIndex("dbo.Products", new[] { "CategoryId" });
             DropTable("dbo.Roles");
             DropTable("dbo.LogProducts");
             DropTable("dbo.Users");
-            DropTable("dbo.Consumers");
+            DropTable("dbo.Customers");
             DropTable("dbo.Products");
             DropTable("dbo.Categories");
         }

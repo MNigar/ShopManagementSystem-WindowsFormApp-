@@ -14,7 +14,7 @@ namespace WindowsProject.Models
         {
            
             LogProduct = new List<LogProduct>();
-            Consumers = new List<Consumer>();
+            Consumers = new List<Customer>();
 
 
         }
@@ -26,7 +26,7 @@ namespace WindowsProject.Models
         public int CategoryId { get; set; }
         public decimal Price { get; set; }
         public User User { get; set; }
-        public int CreatedUserId   { get; set; }
+        public int UserId { get; set; }
         public string PhoneNumber { get; set; }
         public int Count { get; set; }
         public int Status { get; set; }
@@ -34,7 +34,7 @@ namespace WindowsProject.Models
         public decimal SoldedTotal { get; set; }      
         public List<LogProduct> LogProduct { get; set; }
 
-        public List<Consumer> Consumers { get; set; }
+        public List<Customer> Consumers { get; set; }
 
     }
 }
