@@ -19,7 +19,7 @@ namespace WindowsProject
         {
             InitializeComponent();
         }
-        IUserRepository repository;
+        IUserRepository _repository;
         private void LoginForm_Load(object sender, EventArgs e)
         {
          
@@ -43,8 +43,8 @@ namespace WindowsProject
         private void btn_Login_Click(object sender, EventArgs e)
         {
             using (ShopManagementContext context = new ShopManagementContext()) {
-                repository = new UserRepository(context);
-                var userList = repository.GetAll();
+                _repository = new UserRepository(context);
+                var userList = _repository.GetAll();
                 string email = txb_Email.Text;
                 string password = txb_Password.Text;
                 if (string.IsNullOrEmpty(txb_Email.Text) && string.IsNullOrEmpty(txb_Password.Text))
@@ -55,7 +55,7 @@ namespace WindowsProject
                 else
                 {
                     var user = userList.Where(p => p.Email == email).FirstOrDefault();
-                    var result = repository.IfExist(email, password, userList);
+                    var result = _repository.IfExist(email, password, userList);
                     //if(!string.IsNullOrEmpty(txb_Email.Text) && !string.IsNullOrEmpty(txb_Password.Text)                
                     //    && userList.Any(user=> user.Email.ToLower()==txb_Email.Text.ToLower() && user.Password == txb_Password.Text))
                     if (result)

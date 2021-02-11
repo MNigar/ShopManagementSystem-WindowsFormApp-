@@ -15,23 +15,26 @@ namespace WindowsProject
 {
     public partial class ReportForm : Form
     {
+        ICustomerRepository _repository;
+#pragma warning restore CS0169 // The field 'ReportForm.repository' is never used
+        ICategoryRepository _catrepository;
+        IUserRepository _userRepository;
         public ReportForm()
         {
             InitializeComponent();
+            ShopManagementContext context = new ShopManagementContext();
+            _catrepository = new CategoryRepository(context);
+            _userRepository = new UserRepository(context);
+
             SetCategory();
         }
 #pragma warning disable CS0169 // The field 'ReportForm.repository' is never used
-        ICustomerRepository repository;
-#pragma warning restore CS0169 // The field 'ReportForm.repository' is never used
-        ICategoryRepository catrepository;
-        IUserRepository _userRepository;
+       
         private void SetCategory()
         {
-            using (ShopManagementContext context = new ShopManagementContext())
-            {
-                catrepository = new CategoryRepository(context);
-                _userRepository = new UserRepository(context);
-                var categorylist = catrepository.GetAll().Where(t => t.Status == 0);
+           
+              
+                var categorylist = _catrepository.GetAll().Where(t => t.Status == 0);
                 foreach (Category category in categorylist)
                 {
                    
@@ -44,7 +47,7 @@ namespace WindowsProject
                     cmb_UserSearch.Items.Add(user.Id + "." + user.Name );
 
                         
-                }
+                
             }
         }
         private void ReportForm_Load(object sender, EventArgs e)
@@ -252,11 +255,11 @@ namespace WindowsProject
                     {
                         u = u.Where(x => x.Count == Convert.ToInt32(txbSerachCount.Text)).ToList();
                     }
-                    if (!String.IsNullOrEmpty(cmb_SearchDetail.Text))
+                    if (!String.IsNullOrEmpty(cmb_SearchDetail.Text) && cmb_SearchDetail.SelectedIndex != 0)
                     {
                         u = u.Where(x => x.CategoryId == Convert.ToInt32(cmb_SearchDetail.Text.Split('.')[0])).ToList();
                     }
-                    if (!String.IsNullOrEmpty(cmb_UserSearch.Text))
+                    if (!String.IsNullOrEmpty(cmb_UserSearch.Text) && cmb_UserSearch.SelectedIndex!=0)
                     {
                         u = u.Where(x => x.CreatedUserId == Convert.ToInt32(cmb_UserSearch.Text.Split('.')[0])).ToList();
                     }
@@ -277,6 +280,8 @@ namespace WindowsProject
                 int userid = Convert.ToInt32(lbl_UserId.Text);
 
                 var user = context.Users.Where(u => u.Id == userid).FirstOrDefault();
+                cmb_UserSearch.SelectedIndex = 0;
+                cmb_SearchDetail.SelectedIndex = 0;
                 ReportForUser(userid);
             }
 

@@ -690,6 +690,7 @@ namespace WindowsProject
             //    }
             //}
             GetAllProduct();
+            cmb_SearchCategory.SelectedIndex = 0;
         }
 
         private void btn_Search_Click(object sender, EventArgs e)
@@ -829,6 +830,7 @@ namespace WindowsProject
         private void btn_SearchUSers_Click(object sender, EventArgs e)
         {
             btn_GetAll.Visible = false;
+            cmb_SearchByUserCategory.SelectedIndex = 0;
             GetProductInsertedByUser();
         }
 

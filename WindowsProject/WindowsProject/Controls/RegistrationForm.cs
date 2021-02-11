@@ -19,7 +19,7 @@ namespace WindowsProject
     {
         //Idbclass<User> _repository=new Idbclass<User>();
       
-        IUserRepository repository ;
+        IUserRepository _repository ;
 
         public RegistrationForm()
         {
@@ -39,7 +39,7 @@ namespace WindowsProject
         public RegistrationForm(IUserRepository i) : this()
         {
           
-            repository = i;
+            _repository = i;
             
         }
 
@@ -51,8 +51,8 @@ namespace WindowsProject
           
             using (ShopManagementContext context = new ShopManagementContext())
             {
-                repository = new UserRepository(context);
-                List<User> users = repository.GetAll();
+                _repository = new UserRepository(context);
+                List<User> users = _repository.GetAll();
                 User user = new User();
                 
               
@@ -99,10 +99,10 @@ namespace WindowsProject
                     }
                     if (check)
                     {
-                        if (!repository.IfAlreadyExist(user.Email, users))
+                        if (!_repository.IfAlreadyExist(user.Email, users))
                         {
-                            repository.Insert(user);
-                            repository.Save();
+                            _repository.Insert(user);
+                            _repository.Save();
                             MessageBox.Show("Ugurlu");
                             //this.Close();
 

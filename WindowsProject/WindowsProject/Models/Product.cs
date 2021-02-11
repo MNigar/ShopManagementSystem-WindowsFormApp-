@@ -31,7 +31,8 @@ namespace WindowsProject.Models
         public int Count { get; set; }
         public int Status { get; set; }
         public int SoldedCount { get; set; }
-        public decimal SoldedTotal { get; set; }      
+        public decimal SoldedTotal { get; set; }
+       
         public List<LogProduct> LogProduct { get; set; }
 
         public List<Customer> Consumers { get; set; }
