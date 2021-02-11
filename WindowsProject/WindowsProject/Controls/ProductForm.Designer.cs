@@ -70,6 +70,9 @@
             this.btn_SearchUSers = new System.Windows.Forms.Button();
             this.lbl_Names = new System.Windows.Forms.Label();
             this.lbl_cat = new System.Windows.Forms.Label();
+            this.lbl_Expire = new System.Windows.Forms.Label();
+            this.txb_Datetime = new System.Windows.Forms.TextBox();
+            this.dtp_Expire = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_ProductTable)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -102,11 +105,11 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(8, 168);
+            this.tabControl1.Location = new System.Drawing.Point(11, 222);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1010, 469);
+            this.tabControl1.Size = new System.Drawing.Size(1007, 598);
             this.tabControl1.TabIndex = 18;
             // 
             // tabPage1
@@ -116,13 +119,16 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1002, 443);
+            this.tabPage1.Size = new System.Drawing.Size(999, 572);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ForCrud";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dtp_Expire);
+            this.groupBox1.Controls.Add(this.lbl_Expire);
+            this.groupBox1.Controls.Add(this.txb_Datetime);
             this.groupBox1.Controls.Add(this.lbl_Description);
             this.groupBox1.Controls.Add(this.btn_ClearInput);
             this.groupBox1.Controls.Add(this.rtb_Description);
@@ -140,7 +146,7 @@
             this.groupBox1.Controls.Add(this.tbx_productName);
             this.groupBox1.Location = new System.Drawing.Point(5, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(890, 401);
+            this.groupBox1.Size = new System.Drawing.Size(890, 528);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -148,7 +154,7 @@
             // lbl_Description
             // 
             this.lbl_Description.AutoSize = true;
-            this.lbl_Description.Location = new System.Drawing.Point(16, 198);
+            this.lbl_Description.Location = new System.Drawing.Point(16, 258);
             this.lbl_Description.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Description.Name = "lbl_Description";
             this.lbl_Description.Size = new System.Drawing.Size(50, 13);
@@ -168,7 +174,7 @@
             // 
             // rtb_Description
             // 
-            this.rtb_Description.Location = new System.Drawing.Point(107, 179);
+            this.rtb_Description.Location = new System.Drawing.Point(107, 239);
             this.rtb_Description.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rtb_Description.Name = "rtb_Description";
             this.rtb_Description.Size = new System.Drawing.Size(201, 134);
@@ -177,7 +183,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(200, 340);
+            this.btnUpdate.Location = new System.Drawing.Point(216, 394);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(76, 30);
@@ -189,7 +195,7 @@
             // lbl_UserId
             // 
             this.lbl_UserId.AutoSize = true;
-            this.lbl_UserId.Location = new System.Drawing.Point(5, 357);
+            this.lbl_UserId.Location = new System.Drawing.Point(21, 411);
             this.lbl_UserId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_UserId.Name = "lbl_UserId";
             this.lbl_UserId.Size = new System.Drawing.Size(39, 13);
@@ -265,7 +271,7 @@
             // 
             // btn_Insert
             // 
-            this.btn_Insert.Location = new System.Drawing.Point(106, 340);
+            this.btn_Insert.Location = new System.Drawing.Point(122, 394);
             this.btn_Insert.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Insert.Name = "btn_Insert";
             this.btn_Insert.Size = new System.Drawing.Size(76, 30);
@@ -531,11 +537,42 @@
             this.lbl_cat.TabIndex = 28;
             this.lbl_cat.Text = "Kategoriya";
             // 
+            // lbl_Expire
+            // 
+            this.lbl_Expire.AutoSize = true;
+            this.lbl_Expire.Location = new System.Drawing.Point(16, 194);
+            this.lbl_Expire.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_Expire.Name = "lbl_Expire";
+            this.lbl_Expire.Size = new System.Drawing.Size(65, 13);
+            this.lbl_Expire.TabIndex = 22;
+            this.lbl_Expire.Text = "Istifade tarixi";
+            // 
+            // txb_Datetime
+            // 
+            this.txb_Datetime.Location = new System.Drawing.Point(441, 236);
+            this.txb_Datetime.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_Datetime.Name = "txb_Datetime";
+            this.txb_Datetime.Size = new System.Drawing.Size(201, 20);
+            this.txb_Datetime.TabIndex = 23;
+            // 
+            // dtp_Expire
+            // 
+            this.dtp_Expire.CustomFormat = "yyyy.MM.dd";
+            this.dtp_Expire.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_Expire.Location = new System.Drawing.Point(108, 194);
+            this.dtp_Expire.MaxDate = new System.DateTime(2023, 2, 11, 0, 0, 0, 0);
+            this.dtp_Expire.MinDate = new System.DateTime(2021, 2, 11, 0, 0, 0, 0);
+            this.dtp_Expire.Name = "dtp_Expire";
+            this.dtp_Expire.Size = new System.Drawing.Size(200, 20);
+            this.dtp_Expire.TabIndex = 24;
+            this.dtp_Expire.Value = new System.DateTime(2021, 2, 11, 0, 0, 0, 0);
+            this.dtp_Expire.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1148, 682);
+            this.ClientSize = new System.Drawing.Size(1349, 882);
             this.Controls.Add(this.lbl_cat);
             this.Controls.Add(this.lbl_Names);
             this.Controls.Add(this.btn_SearchUSers);
@@ -550,6 +587,7 @@
             this.Controls.Add(this.dgw_ProductTable);
             this.Name = "ProductForm";
             this.Text = "ProductForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProductForm_FormClosing);
             this.Load += new System.EventHandler(this.ProductForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgw_ProductTable)).EndInit();
             this.tabControl1.ResumeLayout(false);
@@ -607,5 +645,8 @@
         private System.Windows.Forms.Label lbl_Description;
         private System.Windows.Forms.Label lbl_Names;
         private System.Windows.Forms.Label lbl_cat;
+        private System.Windows.Forms.DateTimePicker dtp_Expire;
+        private System.Windows.Forms.Label lbl_Expire;
+        private System.Windows.Forms.TextBox txb_Datetime;
     }
 }

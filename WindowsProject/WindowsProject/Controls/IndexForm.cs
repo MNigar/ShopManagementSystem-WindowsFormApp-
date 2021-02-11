@@ -22,10 +22,11 @@ namespace WindowsProject
         ProductForm productForm = new ProductForm();
         private void button1_Click(object sender, EventArgs e)
         {
+           
             productForm.Actions();
 
             productForm.Show();
-           
+        
 
         }
         public delegate void delPassData(TextBox text);

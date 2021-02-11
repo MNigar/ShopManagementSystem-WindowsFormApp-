@@ -52,7 +52,7 @@ namespace WindowsProject
             // 
             this.dgw_Reporttable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgw_Reporttable.Location = new System.Drawing.Point(1, 1);
-            this.dgw_Reporttable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgw_Reporttable.Margin = new System.Windows.Forms.Padding(2);
             this.dgw_Reporttable.Name = "dgw_Reporttable";
             this.dgw_Reporttable.RowHeadersWidth = 62;
             this.dgw_Reporttable.RowTemplate.Height = 28;
@@ -115,7 +115,7 @@ namespace WindowsProject
             // btn_Search
             // 
             this.btn_Search.Location = new System.Drawing.Point(799, 248);
-            this.btn_Search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Search.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(76, 30);
             this.btn_Search.TabIndex = 49;
@@ -128,8 +128,8 @@ namespace WindowsProject
             this.cmb_SearchDetail.FormattingEnabled = true;
             this.cmb_SearchDetail.Items.AddRange(new object[] {
             "select"});
-            this.cmb_SearchDetail.Location = new System.Drawing.Point(673, 127);
-            this.cmb_SearchDetail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmb_SearchDetail.Location = new System.Drawing.Point(673, 124);
+            this.cmb_SearchDetail.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_SearchDetail.Name = "cmb_SearchDetail";
             this.cmb_SearchDetail.Size = new System.Drawing.Size(201, 21);
             this.cmb_SearchDetail.TabIndex = 46;
@@ -137,7 +137,7 @@ namespace WindowsProject
             // txbSerachCount
             // 
             this.txbSerachCount.Location = new System.Drawing.Point(674, 94);
-            this.txbSerachCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbSerachCount.Margin = new System.Windows.Forms.Padding(2);
             this.txbSerachCount.Name = "txbSerachCount";
             this.txbSerachCount.Size = new System.Drawing.Size(201, 20);
             this.txbSerachCount.TabIndex = 47;
@@ -145,7 +145,7 @@ namespace WindowsProject
             // txb_SearchDetailName
             // 
             this.txb_SearchDetailName.Location = new System.Drawing.Point(674, 36);
-            this.txb_SearchDetailName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_SearchDetailName.Margin = new System.Windows.Forms.Padding(2);
             this.txb_SearchDetailName.Name = "txb_SearchDetailName";
             this.txb_SearchDetailName.Size = new System.Drawing.Size(201, 20);
             this.txb_SearchDetailName.TabIndex = 44;
@@ -163,7 +163,7 @@ namespace WindowsProject
             // textBStatus
             // 
             this.textBStatus.Location = new System.Drawing.Point(673, 163);
-            this.textBStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBStatus.Margin = new System.Windows.Forms.Padding(2);
             this.textBStatus.Name = "textBStatus";
             this.textBStatus.Size = new System.Drawing.Size(201, 20);
             this.textBStatus.TabIndex = 55;
@@ -174,7 +174,7 @@ namespace WindowsProject
             this.cmb_UserSearch.Items.AddRange(new object[] {
             "select"});
             this.cmb_UserSearch.Location = new System.Drawing.Point(674, 61);
-            this.cmb_UserSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmb_UserSearch.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_UserSearch.Name = "cmb_UserSearch";
             this.cmb_UserSearch.Size = new System.Drawing.Size(201, 21);
             this.cmb_UserSearch.TabIndex = 57;
@@ -183,7 +183,7 @@ namespace WindowsProject
             // btn_GetAllUser
             // 
             this.btn_GetAllUser.Location = new System.Drawing.Point(684, 248);
-            this.btn_GetAllUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_GetAllUser.Margin = new System.Windows.Forms.Padding(2);
             this.btn_GetAllUser.Name = "btn_GetAllUser";
             this.btn_GetAllUser.Size = new System.Drawing.Size(76, 30);
             this.btn_GetAllUser.TabIndex = 58;
@@ -230,9 +230,10 @@ namespace WindowsProject
             this.Controls.Add(this.txb_SearchDetailName);
             this.Controls.Add(this.lbl_UserId);
             this.Controls.Add(this.dgw_Reporttable);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ReportForm";
             this.Text = "ReportForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReportForm_FormClosing);
             this.Load += new System.EventHandler(this.ReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgw_Reporttable)).EndInit();
             this.ResumeLayout(false);

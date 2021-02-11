@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -23,7 +24,7 @@ namespace WindowsProject
             GetAllProduct();
             SetCategory();
             SetUser();
-           
+          
         }
    
         private void Clear()
@@ -178,11 +179,51 @@ namespace WindowsProject
         {
             lbl_UserId.Text = txtForm1.Text;
         }
+        private void SortByExpireDate()
+         {
+            using (ShopManagementContext context = new ShopManagementContext())
+            {
+                _productRepository = new ProductRepository(context);
+                _logProductRepository = new LogProductRepository(context); 
+                var list = _productRepository.GetAll();
+                var user = context.Users.Where(u => u.RoleId == (int)Enums.Role.Admin).FirstOrDefault();
 
+                var sortedList = list.Where(p => p.ExpireDate.Day.CompareTo(DateTime.Now.Day) == 0);
+                foreach (var i in sortedList)
+                {
+                    i.Status = (int)Enums.Status.Expired;
+                    i.Name = i.Name;
+                    i.Id = i.Id;
+                    i.PhoneNumber = i.PhoneNumber;
+                    i.Price = i.Price;
+                    i.SoldedCount = i.SoldedCount;
+                    i.ExpireDate = i.ExpireDate;
+                    i.SoldedTotal = i.SoldedTotal;
+                    i.UserId = i.UserId;
+                    i.CategoryId = i.CategoryId;
+                    i.Count = i.Count;
+                    _productRepository.Update(i);
+                    _productRepository.Save();
+                    LogProduct logProduct = new LogProduct()
+                    {
+                        ProductId = i.Id,
+                        Description = "İstifadə tarxi bitib",
+                        Status = (int)Status.Expired,
+                        UserId = user.Id,
+                        Date = i.ExpireDate
+
+                    };
+                    _logProductRepository.Insert(logProduct);
+                    _logProductRepository.Save();
+                }
+              
+            }
+        }
         private void GetAllProduct()
         {
             using (ShopManagementContext context = new ShopManagementContext())
             {
+                SortByExpireDate();
                 var query = context.Products.Where(y => y.Status == (int)Status.Active).Select(product => new
                 {
                     product.Id,
@@ -198,9 +239,11 @@ namespace WindowsProject
                     
                     product.PhoneNumber,
                     product.SoldedCount,
-                    product.SoldedTotal
+                    product.SoldedTotal,
+                    product.ExpireDate
 
                 }).ToList();
+
                 dgw_ProductTable.DataSource = query;
                
             }
@@ -210,6 +253,7 @@ namespace WindowsProject
         {
             using (ShopManagementContext context = new ShopManagementContext())
             {
+                SortByExpireDate();
                 int userid = Convert.ToInt32(lbl_UserId.Text);
                 var query = context.Products.Where(y => y.Status == (int)Status.Active && y.UserId == userid).Select(product => new
                 {
@@ -223,7 +267,9 @@ namespace WindowsProject
                     product.CategoryId,
                     Status = ((Enums.Status)product.Status),
                     product.PhoneNumber,
-                    product.SoldedTotal
+                    product.SoldedCount,
+                    product.SoldedTotal,
+                    product.ExpireDate
 
                 }).ToList();
                 dgw_ProductTable.DataSource = query;
@@ -265,7 +311,8 @@ namespace WindowsProject
                         PhoneNumber = user.Phone,
                         Status = (int)Status.Active,
                         SoldedTotal = 0,
-                        SoldedCount = 0
+                        SoldedCount = 0,
+                        ExpireDate = dtp_Expire.Value
                     };
                     _productRepository.Insert(pr);
                     _productRepository.Save();
@@ -330,6 +377,7 @@ namespace WindowsProject
                         UserId = user.Id,
                         PhoneNumber = user.Phone,
                         Status = (int)Status.Active,
+                        ExpireDate = dtp_Expire.Value
 
                     };
 
@@ -371,7 +419,7 @@ namespace WindowsProject
             cmb_Category.SelectedItem = dgw_ProductTable.CurrentRow.Cells[7].Value.ToString() + "." + dgw_ProductTable.CurrentRow.Cells[4].Value.ToString();
             txb_Price.Text = dgw_ProductTable.CurrentRow.Cells[2].Value.ToString();
             txb_Count.Text = dgw_ProductTable.CurrentRow.Cells[3].Value.ToString();
-
+            dtp_Expire.Value =(DateTime) dgw_ProductTable.CurrentRow.Cells[12].Value;
         }
 
         private void dgw_ProductTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -405,7 +453,7 @@ namespace WindowsProject
                         UserId = user.Id,
                         PhoneNumber = user.Phone,
                         Status = (int)Status.Deactive,
-
+                        ExpireDate = dtp_Expire.Value
                     };
 
                     LogProduct logProduct = new LogProduct()
@@ -452,6 +500,7 @@ namespace WindowsProject
 
                 var userid = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[7].Value.ToString());
                 var user = context.Users.Where(u => u.Id == userid).FirstOrDefault();
+
                 Product product = new Product()
                 {
                     Id = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[0].Value),
@@ -464,7 +513,9 @@ namespace WindowsProject
                     PhoneNumber = user.Phone,
                     Status = (int)Status.Active,
                     SoldedCount = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[10].Value.ToString()) + 1,
-                    SoldedTotal = Convert.ToDecimal(dgw_ProductTable.CurrentRow.Cells[11].Value.ToString()) + Convert.ToDecimal(dgw_ProductTable.CurrentRow.Cells[2].Value.ToString())
+                    SoldedTotal = Convert.ToDecimal(dgw_ProductTable.CurrentRow.Cells[11].Value.ToString()) + Convert.ToDecimal(dgw_ProductTable.CurrentRow.Cells[2].Value.ToString()),
+                    ExpireDate = (DateTime)dtp_Expire.Value
+                    
                 };
 
 
@@ -481,32 +532,69 @@ namespace WindowsProject
                 }
                 else
                 {
-                    if (currentCustomer == null)
+                    bool check = false;
+                    if (product.ExpireDate.Day - DateTime.Now.Day == 3)
                     {
-                        customer.Count = 1;
-                        customer.Price = Convert.ToDecimal(dgw_ProductTable.CurrentRow.Cells[2].Value.ToString()) + product.Price;
-                        _customerRepository.Insert(customer);
+                        check = false;
+                   
+                        if (MessageBox.Show("Raziliq", "Mehsulun vaxtinin bitmeyine 3 gun qalib eminsinizmi?", MessageBoxButtons.YesNo) == DialogResult.No)
+                        {
+                            check = false;
+                            MessageBox.Show("Almadiniz");
+                        }
+                        else { check = true; }
                     }
-                    else
+                    if (product.ExpireDate.Day - DateTime.Now.Day == 2)
                     {
-                        customer.Id = currentCustomer.Id;
-                        currentCustomer.Count += 1;
-                        customer.Price = Convert.ToDecimal(dgw_ProductTable.CurrentRow.Cells[2].Value.ToString()) + product.Price;
-
-                        customer.Count = currentCustomer.Count;
-                        _customerRepository.Update(customer);
-
+                        check = false;
+                      
+                        if (MessageBox.Show("Raziliq", "Mehsulun vaxtinin bitmeyine 3 gun qalib eminsinizmi?", MessageBoxButtons.YesNo) == DialogResult.No)
+                        {
+                            check = false;
+                            MessageBox.Show("Almadiniz");
+                        }
+                        else { check = true; }
                     }
-                    if (product.Count == 0)
+                    if (product.ExpireDate.Day - DateTime.Now.Day == 1)
                     {
-                        product.Status = (int)Status.Deactive;
+                        check = false;
+                      
+                        if (MessageBox.Show("Raziliq", "Mehsulun vaxtinin bitmeyine 3 gun qalib eminsinizmi?", MessageBoxButtons.YesNo) == DialogResult.No)
+                        {
+                            check = false;
+                            MessageBox.Show("Almadiniz");
+                        }
+                        else { check = true; }
                     }
-                    _productRepository.Update(product);
-                    _productRepository.Save();
+                    if (check == true)
+                    {
+                        if (currentCustomer == null)
+                        {
+                            customer.Count = 1;
+                            customer.Price = Convert.ToDecimal(dgw_ProductTable.CurrentRow.Cells[2].Value.ToString()) + product.Price;
+                            _customerRepository.Insert(customer);
+                        }
+                        else
+                        {
+                            customer.Id = currentCustomer.Id;
+                            currentCustomer.Count += 1;
+                            customer.Price = Convert.ToDecimal(dgw_ProductTable.CurrentRow.Cells[2].Value.ToString()) + product.Price;
 
-                    _customerRepository.Save();
+                            customer.Count = currentCustomer.Count;
+                            _customerRepository.Update(customer);
 
-                    GetAllProduct();
+                        }
+                        if (product.Count == 0)
+                        {
+                            product.Status = (int)Status.Deactive;
+                        }
+                        _productRepository.Update(product);
+                        _productRepository.Save();
+
+                        _customerRepository.Save();
+
+                        GetAllProduct();
+                    }
                 }
             }
         }
@@ -640,75 +728,26 @@ namespace WindowsProject
         }
         private void txb_SearchName_TextChanged(object sender, EventArgs e)
         {
-            //using (ShopManagementContext context = new ShopManagementContext())
-            //{
-
-            //    int currentUserId = Convert.ToInt32(lbl_UserId.Text);
-            //    var currentUser = context.Users.Where(y => y.Id == currentUserId).FirstOrDefault();
-            //    if (currentUser.RoleId == (int)Enums.Role.Admin)
-            //    {
-            //        SearchByName();
-            //    }
-
-            //    else
-            //    {
-            //        UserSearchByName();
-            //    }
-            //}
+           
             SearchByName();
         }
 
         private void cmb_SearchCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //using (ShopManagementContext context = new ShopManagementContext())
-            //{
-            //    int currentUserId = Convert.ToInt32(lbl_UserId.Text);
-            //    var currentUser = context.Users.Where(y => y.Id == currentUserId).FirstOrDefault();
-            //    if (currentUser.RoleId == (int)Enums.Role.Admin)
-            //    {
-            //        SearchCategoryAdmin();
-            //    }
-
-            //    else
-            //    {
-            //        SearchCategory();
-            //    }
-            //}
+            
             SearchCategoryAdmin();
         }
 
         private void btn_GetAll_Click(object sender, EventArgs e)
         {
-            //using (ShopManagementContext context = new ShopManagementContext())
-            //{
-            //    int currentUserId = Convert.ToInt32(lbl_UserId.Text);
-            //    var currentUser = context.Users.Where(y => y.Id == currentUserId).FirstOrDefault();
-            //    if (currentUser.RoleId == (int)Enums.Role.Admin)
-            //    { GetAllProduct(); }
-            //    else { 
-            //        GetProductInsertedByUser();
-            //    }
-            //}
+            
             GetAllProduct();
             cmb_SearchCategory.SelectedIndex = 0;
         }
 
         private void btn_Search_Click(object sender, EventArgs e)
         {
-            //using (ShopManagementContext context = new ShopManagementContext())
-            //{
-            //    int currentUserId = Convert.ToInt32(lbl_UserId.Text);
-            //    var currentUser = context.Users.Where(y => y.Id == currentUserId).FirstOrDefault();
-            //    if (currentUser.RoleId == (int)Enums.Role.Admin)
-            //    {
-            //        SearchAll ();
-            //    }
-
-            //    else
-            //    {
-            //        SearchbyUser();
-            //    }
-            //}
+          
             SearchAll();
 
 
@@ -837,6 +876,18 @@ namespace WindowsProject
         private void tabPage2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ProductForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            this.Parent = null;
+            e.Cancel = true;
         }
     }
 }

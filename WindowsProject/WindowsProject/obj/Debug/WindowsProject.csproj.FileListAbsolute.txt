@@ -220,3 +220,4 @@ C:\Users\Nigar\OneDrive\Desktop\New folder (3)\pr\WindowsProject\WindowsProject\
 C:\Users\Nigar\OneDrive\Desktop\New folder (3)\pr\WindowsProject\WindowsProject\obj\Debug\WindowsProject.csproj.CopyComplete
 C:\Users\Nigar\OneDrive\Desktop\New folder (3)\pr\WindowsProject\WindowsProject\obj\Debug\WindowsProject.exe
 C:\Users\Nigar\OneDrive\Desktop\New folder (3)\pr\WindowsProject\WindowsProject\obj\Debug\WindowsProject.pdb
+D:\New folder (2)\pr\WindowsProject\WindowsProject\obj\Debug\WindowsProject.Migrations.editProductproperty.resources

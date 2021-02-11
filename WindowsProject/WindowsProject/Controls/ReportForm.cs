@@ -215,11 +215,11 @@ namespace WindowsProject
                     {
                         u = u.Where(x => x.SoldedCount == Convert.ToInt32(txbSerachCount.Text)).ToList();
                     }
-                    if (!String.IsNullOrEmpty(cmb_UserSearch.Text))
+                    if (!String.IsNullOrEmpty(cmb_UserSearch.Text) && cmb_UserSearch.SelectedIndex!=0)
                     {
                         u = u.Where(x => x.UserId== Convert.ToInt32(cmb_UserSearch.Text.Split('.')[0])).ToList();
                     }
-                    if (!String.IsNullOrEmpty(cmb_SearchDetail.Text))
+                    if (!String.IsNullOrEmpty(cmb_SearchDetail.Text) && cmb_SearchDetail.SelectedIndex!=0)
                     {
                         u = u.Where(x => x.CategoryId== Convert.ToInt32(cmb_SearchDetail.Text.Split('.')[0])).ToList();
                     }
@@ -290,6 +290,12 @@ namespace WindowsProject
 
         private void cmb_UserSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void ReportForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           
 
         }
     }
