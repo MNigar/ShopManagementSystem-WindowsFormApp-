@@ -55,7 +55,6 @@ namespace WindowsProject
             this.lbl_Name.Size = new System.Drawing.Size(29, 20);
             this.lbl_Name.TabIndex = 0;
             this.lbl_Name.Text = "Ad";
-            this.lbl_Name.UseWaitCursor = true;
             // 
             // lbl_Surname
             // 
@@ -65,7 +64,6 @@ namespace WindowsProject
             this.lbl_Surname.Size = new System.Drawing.Size(54, 20);
             this.lbl_Surname.TabIndex = 1;
             this.lbl_Surname.Text = "Soyad";
-            this.lbl_Surname.UseWaitCursor = true;
             // 
             // lbl_Email
             // 
@@ -75,7 +73,6 @@ namespace WindowsProject
             this.lbl_Email.Size = new System.Drawing.Size(118, 20);
             this.lbl_Email.TabIndex = 2;
             this.lbl_Email.Text = "Elektron Ünvan";
-            this.lbl_Email.UseWaitCursor = true;
             // 
             // label4
             // 
@@ -84,7 +81,6 @@ namespace WindowsProject
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 20);
             this.label4.TabIndex = 3;
-            this.label4.UseWaitCursor = true;
             // 
             // lbl_Password
             // 
@@ -94,7 +90,6 @@ namespace WindowsProject
             this.lbl_Password.Size = new System.Drawing.Size(42, 20);
             this.lbl_Password.TabIndex = 4;
             this.lbl_Password.Text = "Şifrə";
-            this.lbl_Password.UseWaitCursor = true;
             // 
             // txb_Name
             // 
@@ -102,7 +97,6 @@ namespace WindowsProject
             this.txb_Name.Name = "txb_Name";
             this.txb_Name.Size = new System.Drawing.Size(240, 26);
             this.txb_Name.TabIndex = 5;
-            this.txb_Name.UseWaitCursor = true;
             // 
             // txb_Surname
             // 
@@ -110,7 +104,6 @@ namespace WindowsProject
             this.txb_Surname.Name = "txb_Surname";
             this.txb_Surname.Size = new System.Drawing.Size(240, 26);
             this.txb_Surname.TabIndex = 6;
-            this.txb_Surname.UseWaitCursor = true;
             // 
             // txb_Email
             // 
@@ -118,7 +111,6 @@ namespace WindowsProject
             this.txb_Email.Name = "txb_Email";
             this.txb_Email.Size = new System.Drawing.Size(240, 26);
             this.txb_Email.TabIndex = 7;
-            this.txb_Email.UseWaitCursor = true;
             // 
             // txb_PhoneNumber
             // 
@@ -126,7 +118,6 @@ namespace WindowsProject
             this.txb_PhoneNumber.Name = "txb_PhoneNumber";
             this.txb_PhoneNumber.Size = new System.Drawing.Size(240, 26);
             this.txb_PhoneNumber.TabIndex = 8;
-            this.txb_PhoneNumber.UseWaitCursor = true;
             // 
             // txb_Password
             // 
@@ -136,7 +127,6 @@ namespace WindowsProject
             this.txb_Password.PasswordChar = '*';
             this.txb_Password.Size = new System.Drawing.Size(240, 26);
             this.txb_Password.TabIndex = 9;
-            this.txb_Password.UseWaitCursor = true;
             // 
             // label6
             // 
@@ -167,7 +157,6 @@ namespace WindowsProject
             this.gb_Registration.TabIndex = 11;
             this.gb_Registration.TabStop = false;
             this.gb_Registration.Text = "Registration";
-            this.gb_Registration.UseWaitCursor = true;
             // 
             // btn_Login
             // 
@@ -177,7 +166,6 @@ namespace WindowsProject
             this.btn_Login.TabIndex = 12;
             this.btn_Login.Text = "Daxil olun";
             this.btn_Login.UseVisualStyleBackColor = true;
-            this.btn_Login.UseWaitCursor = true;
             this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
             // btn_Registration
@@ -188,7 +176,6 @@ namespace WindowsProject
             this.btn_Registration.TabIndex = 11;
             this.btn_Registration.Text = "Qeydiyyatdan keçin";
             this.btn_Registration.UseVisualStyleBackColor = true;
-            this.btn_Registration.UseWaitCursor = true;
             this.btn_Registration.Click += new System.EventHandler(this.btn_Registration_Click);
             // 
             // lbl_PhoneNumber
@@ -199,7 +186,6 @@ namespace WindowsProject
             this.lbl_PhoneNumber.Size = new System.Drawing.Size(124, 20);
             this.lbl_PhoneNumber.TabIndex = 10;
             this.lbl_PhoneNumber.Text = "Telefon Nömrəsi";
-            this.lbl_PhoneNumber.UseWaitCursor = true;
             // 
             // RegistrationForm
             // 

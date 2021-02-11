@@ -47,39 +47,47 @@ namespace WindowsProject
                 var userList = repository.GetAll();
                 string email = txb_Email.Text;
                 string password = txb_Password.Text;
-                var user = userList.Where(p=>p.Email == email).FirstOrDefault();
-                var result = repository.IfExist(email, password, userList);
-                //if(!string.IsNullOrEmpty(txb_Email.Text) && !string.IsNullOrEmpty(txb_Password.Text)                
-                //    && userList.Any(user=> user.Email.ToLower()==txb_Email.Text.ToLower() && user.Password == txb_Password.Text))
-                if (result)
+                if (string.IsNullOrEmpty(txb_Email.Text) && string.IsNullOrEmpty(txb_Password.Text))
                 {
-                    if (user.RoleId == 1)
-                    {
-                       
-                        textBox1.Text = Convert.ToString(user.Id);
+                    MessageBox.Show("Email və ya şifrə  daxil edilməyib");
 
-                
-                        IndexForm index = new IndexForm();
-                        CategoryForm form = new CategoryForm();
-                        delPassData del = new delPassData(index.funData);
-                        del(this.textBox1);
-                        index.Show();
-                    }
-                    else
-                    {
-                        textBox1.Text = Convert.ToString(user.Id);
-
-                       
-                        IndexForm index = new IndexForm();
-                        CategoryForm form = new CategoryForm();
-                        delPassData del = new delPassData(index.funData);
-                        del(this.textBox1);
-                        index.Show();
-                    }
                 }
                 else
                 {
-                    MessageBox.Show("Email və ya şifrə doğru daxil edilməyib");
+                    var user = userList.Where(p => p.Email == email).FirstOrDefault();
+                    var result = repository.IfExist(email, password, userList);
+                    //if(!string.IsNullOrEmpty(txb_Email.Text) && !string.IsNullOrEmpty(txb_Password.Text)                
+                    //    && userList.Any(user=> user.Email.ToLower()==txb_Email.Text.ToLower() && user.Password == txb_Password.Text))
+                    if (result)
+                    {
+                        if (user.RoleId == 1)
+                        {
+
+                            textBox1.Text = Convert.ToString(user.Id);
+
+
+                            IndexForm index = new IndexForm();
+                            CategoryForm form = new CategoryForm();
+                            delPassData del = new delPassData(index.funData);
+                            del(this.textBox1);
+                            index.Show();
+                        }
+                        else
+                        {
+                            textBox1.Text = Convert.ToString(user.Id);
+
+
+                            IndexForm index = new IndexForm();
+                            CategoryForm form = new CategoryForm();
+                            delPassData del = new delPassData(index.funData);
+                            del(this.textBox1);
+                            index.Show();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Email və ya şifrə doğru daxil edilməyib");
+                    }
                 }
             }
 

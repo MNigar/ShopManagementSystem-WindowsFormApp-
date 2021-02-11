@@ -23,6 +23,7 @@ namespace WindowsProject
             GetAllProduct();
             SetCategory();
             SetUser();
+           
         }
    
         private void Clear()
@@ -30,8 +31,10 @@ namespace WindowsProject
             tbx_productName.Text = "";
             txb_Price.Text = "";
             txb_Count.Text = "";
-            cmb_Category.Items.Insert(0, "select");
             cmb_Category.SelectedIndex = 0;
+            cmb_SearchDetail.SelectedIndex = 0;
+            cmb_SearchCategory.SelectedIndex = 0;
+            cmb_SearchByUserCategory.SelectedIndex = 0;
             rtb_Description.Text = "";
 
         }
@@ -137,9 +140,11 @@ namespace WindowsProject
             using (ShopManagementContext context = new ShopManagementContext())
             {
                 _categoryrepository = new CategoryRepository(context);
-              
                 var catlist = _categoryrepository.GetAll();
 
+                cmb_Category.Items.Insert(0, "select");
+                cmb_Category.SelectedIndex = 0;
+               
                 foreach (Category category in catlist.Where(c=>c.Status==0))
                 {
                     cmb_Category.Items.Add(category.Id + "." + category.Name);
@@ -147,6 +152,12 @@ namespace WindowsProject
                     cmb_SearchDetail.Items.Add(category.Id + "." + category.Name);
                     cmb_SearchByUserCategory.Items.Add(category.Id + "." + category.Name);
                 }
+
+                
+                
+
+                //cmb_SearchByUserCategory.Items.Insert(0, "select");
+                
             }
         }
         private void SetUser()
@@ -154,8 +165,8 @@ namespace WindowsProject
             using (ShopManagementContext context = new ShopManagementContext())
             {
                 _userRepository = new UserRepository(context);
-                ////cmb_User.Items.Insert(0, "select");
-                //cmb_User.SelectedIndex = 0;
+                cmb_User.Items.Insert(0, "select");
+                cmb_User.SelectedIndex = 0;
                 foreach (User user in _userRepository.GetAll())
                 {
                     cmb_User.Items.Add(user.Id + "." + user.Name);
@@ -191,7 +202,7 @@ namespace WindowsProject
 
                 }).ToList();
                 dgw_ProductTable.DataSource = query;
-
+               
             }
 
         }
@@ -304,7 +315,7 @@ namespace WindowsProject
                 if (String.IsNullOrEmpty(tbx_productName.Text) || String.IsNullOrEmpty(txb_Count.Text)
                     || String.IsNullOrEmpty(txb_Price.Text) || String.IsNullOrEmpty(cmb_Category.Text) || rtb_Description.Text == "")
                 {
-                    MessageBox.Show("Xanalari doldurun");
+                    MessageBox.Show("İzahat hissəsin doldurun");
                 }
 
                 else
@@ -357,7 +368,7 @@ namespace WindowsProject
         {
 
             tbx_productName.Text = dgw_ProductTable.CurrentRow.Cells[1].Value.ToString();
-            cmb_Category.SelectedItem = dgw_ProductTable.CurrentRow.Cells[6].Value.ToString() + "." + dgw_ProductTable.CurrentRow.Cells[4].Value.ToString();
+            cmb_Category.SelectedItem = dgw_ProductTable.CurrentRow.Cells[7].Value.ToString() + "." + dgw_ProductTable.CurrentRow.Cells[4].Value.ToString();
             txb_Price.Text = dgw_ProductTable.CurrentRow.Cells[2].Value.ToString();
             txb_Count.Text = dgw_ProductTable.CurrentRow.Cells[3].Value.ToString();
 
@@ -388,7 +399,7 @@ namespace WindowsProject
                         Id = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[0].Value),
                         Name = dgw_ProductTable.CurrentRow.Cells[1].Value.ToString(),
 
-                        CategoryId = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[5].Value.ToString()),
+                        CategoryId = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[7].Value.ToString()),
                         Price = Convert.ToDecimal(dgw_ProductTable.CurrentRow.Cells[2].Value.ToString()),
                         Count = Convert.ToInt32(dgw_ProductTable.CurrentRow.Cells[3].Value.ToString()),
                         UserId = user.Id,
@@ -463,7 +474,7 @@ namespace WindowsProject
                 customer.ProductId = product.Id;
                 customer.CreatedUserId = currentUserId;
                 customer.CreatedDate = DateTime.Now;
-                if (product.UserId == userid)
+                if (product.UserId == currentUserId)
                 {
                     MessageBox.Show("Özünüz daxil etdiyiniz məhsulu ala bilməzsiniz");
 
@@ -506,7 +517,7 @@ namespace WindowsProject
                 int currentUserId = Convert.ToInt32(lbl_UserId.Text);
                 var currentUser = context.Users.Where(y => y.Id == currentUserId).FirstOrDefault();
 
-                var query = context.Products.Where(y => y.Status == (int)Status.Active).Select(product => new
+                var query = context.Products.Where(y => y.Status == (int)Status.Active && y.Name.Contains(txb_SearchName.Text)).Select(product => new
                 {
                     product.Id,
                     product.Name,
@@ -521,8 +532,8 @@ namespace WindowsProject
 
                 }).ToList();
 
-                var search = query.Where(p => p.Name.Contains(txb_SearchName.Text)).ToList();
-                dgw_ProductTable.DataSource = search;
+                
+                dgw_ProductTable.DataSource = query;
 
             }
         }
@@ -533,7 +544,8 @@ namespace WindowsProject
                 int currentUserId = Convert.ToInt32(lbl_UserId.Text);
                 var currentUser = context.Users.Where(y => y.Id == currentUserId).FirstOrDefault();
 
-                var query = context.Products.Where(y => y.Status == (int)Status.Active && y.UserId == currentUserId).Select(product => new
+                var query = context.Products.Where(y => y.Status == (int)Status.Active && y.UserId == currentUserId &&
+                y.Name.Contains(txb_SearchNameByUSer.Text)).Select(product => new
                 {
                     product.Id,
                     product.Name,
@@ -548,8 +560,8 @@ namespace WindowsProject
 
                 }).ToList();
 
-                var search = query.Where(p => p.Name.Contains(txb_SearchNameByUSer.Text)).ToList();
-                dgw_ProductTable.DataSource = search;
+                //var search = query.Where(p => p.Name.Contains(txb_SearchNameByUSer.Text)).ToList();
+                dgw_ProductTable.DataSource = query;
 
             }
         }
@@ -563,7 +575,6 @@ namespace WindowsProject
 
 
 
-
                 var query = context.Products.Where(y => y.Status == (int)Status.Active).Select(product => new
                 {
                     product.Id,
@@ -578,8 +589,16 @@ namespace WindowsProject
                     product.SoldedCount
 
                 }).ToList();
-                var search = query.Where(product => product.CategoryId == Convert.ToInt32(cmb_SearchCategory.Text.Split('.')[0])).ToList();
-                dgw_ProductTable.DataSource = search;
+                if (cmb_SearchCategory.SelectedIndex != 0)
+                {
+                    var search = query.Where(product => product.CategoryId == Convert.ToInt32(cmb_SearchCategory.Text.Split('.')[0])).ToList();
+                    dgw_ProductTable.DataSource = search;
+
+                }
+                else
+                {
+                    dgw_ProductTable.DataSource = query;
+                }
 
 
 
@@ -592,7 +611,6 @@ namespace WindowsProject
             {
                 int currentUserId = Convert.ToInt32(lbl_UserId.Text);
                 var currentUser = context.Users.Where(y => y.Id == currentUserId).FirstOrDefault();
-
                 var query = context.Products.Where(y => y.Status == (int)Status.Active && y.UserId == currentUserId).Select(product => new
                 {
 
@@ -609,8 +627,15 @@ namespace WindowsProject
                     product.SoldedCount
 
                 }).ToList();
-                var search = query.Where(product => product.CategoryId == Convert.ToInt32(cmb_SearchByUserCategory.Text.Split('.')[0])).ToList();
-                dgw_ProductTable.DataSource = search;
+                if (cmb_SearchByUserCategory.SelectedIndex != 0)
+                {
+                    var search = query.Where(product => product.CategoryId == Convert.ToInt32(cmb_SearchByUserCategory.Text.Split('.')[0])).ToList();
+                    dgw_ProductTable.DataSource = search;
+                }
+                else
+                {
+                    dgw_ProductTable.DataSource = query;
+                }
             }
         }
         private void txb_SearchName_TextChanged(object sender, EventArgs e)
@@ -691,7 +716,7 @@ namespace WindowsProject
         {
             using (ShopManagementContext context = new ShopManagementContext())
             {
-                var query = context.Products.Where(y => y.Status == (int)Status.Active).Select(product => new
+               var query = context.Products.Where(y => y.Status == (int)Status.Active).Select(product => new
                 {
                     product.Id,
                     product.Name,
@@ -708,7 +733,7 @@ namespace WindowsProject
 
                 if (!String.IsNullOrEmpty(txb_SearchDetailName.Text))
                 {
-                    query = query.Where(x => x.Name.Contains(txb_SearchDetailName.Text)).ToList();
+                    query = query.Where(x => x.Name.ToLower().Contains(txb_SearchDetailName.Text.ToLower())).ToList();
                 }
                 if (!String.IsNullOrEmpty(txbSearchPrice.Text))
                 {
@@ -718,11 +743,11 @@ namespace WindowsProject
                 {
                     query = query.Where(x => x.Count == Convert.ToInt32(txbSerachCount.Text)).ToList();
                 }
-                if (!String.IsNullOrEmpty(txb_UserId.Text))
+                if (!String.IsNullOrEmpty(cmb_User.Text) && cmb_User.SelectedIndex!=0)
                 {
-                    query = query.Where(x => x.UserId == Convert.ToInt32(txb_UserId.Text)).ToList();
+                    query = query.Where(x => x.UserId == Convert.ToInt32(cmb_User.Text.Split('.')[0])).ToList();
                 }
-                if (!String.IsNullOrEmpty(cmb_SearchDetail.Text))
+                if (!String.IsNullOrEmpty(cmb_SearchDetail.Text ) && cmb_SearchDetail.SelectedIndex != 0)
                 {
                     query = query.Where(x => x.CategoryId == Convert.ToInt32(cmb_SearchDetail.Text.Split('.')[0])).ToList();
                 }
@@ -759,7 +784,7 @@ namespace WindowsProject
 
                 if (!String.IsNullOrEmpty(txb_SearchDetailName.Text))
                 {
-                    query = query.Where(x => x.Name.Contains(txb_SearchDetailName.Text)).ToList();
+                    query = query.Where(x => x.Name.ToLower().Contains(txb_SearchDetailName.Text.ToLower())).ToList();
                 }
                 if (!String.IsNullOrEmpty(txbSearchPrice.Text))
                 {
@@ -769,9 +794,9 @@ namespace WindowsProject
                 {
                     query = query.Where(x => x.Count == Convert.ToInt32(txbSerachCount.Text)).ToList();
                 }
-                if (!String.IsNullOrEmpty(txb_UserId.Text))
+                if (!String.IsNullOrEmpty(cmb_User.Text))
                 {
-                    query = query.Where(x => x.UserId == Convert.ToInt32(txb_UserId.Text)).ToList();
+                    query = query.Where(x => x.UserId == Convert.ToInt32(cmb_User.Text.Split('.')[0])).ToList();
                 }
                 if (!String.IsNullOrEmpty(cmb_SearchDetail.Text))
                 {
@@ -807,6 +832,9 @@ namespace WindowsProject
             GetProductInsertedByUser();
         }
 
-      
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

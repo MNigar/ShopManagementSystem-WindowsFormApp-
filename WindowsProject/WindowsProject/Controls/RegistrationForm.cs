@@ -52,7 +52,7 @@ namespace WindowsProject
             using (ShopManagementContext context = new ShopManagementContext())
             {
                 repository = new UserRepository(context);
-                List<User> users = new List<User>();
+                List<User> users = repository.GetAll();
                 User user = new User();
                 
               
@@ -64,44 +64,60 @@ namespace WindowsProject
                 user.RoleId = 2;
                 user.CreatedDate = DateTime.Now;
                 user.Status = 0;
-                if (!string.IsNullOrEmpty(txb_Email.Text)
-               && !string.IsNullOrEmpty(txb_Name.Text)
-               && !string.IsNullOrEmpty(txb_Surname.Text)
-               && !string.IsNullOrEmpty(txb_PhoneNumber.Text)
-               && !string.IsNullOrEmpty(txb_Password.Text))
-                {
-                    if (! repository.IfAlreadyExist(user.Email, users))
-                        {
-                         if( !Regex.IsMatch(txb_PhoneNumber.Text, @"^([+994])+(50|55|51|77|70|99|10|60)+[0-9]{7}$"))
-                        {
-                            MessageBox.Show("Telefon nömrəsinin formatı +994XXXXXXXXX olmalıdır");
-                        }
-                         if (!Regex.IsMatch(txb_Email.Text, @"^[a-z0-9][-a-z0-9._]+@([-a-z0-9]+[.])+[a-z]{2,5}$"))
-                        {
-                            MessageBox.Show("Email formatı example@gmail.com şəklində olmalıdır");
-                        }
-                         if(txb_Password.Text.Length < 8)
-                        {
-                            MessageBox.Show("Şifrə uzunluğu minimum 8 simvol olmalıdır");
-                        }
-
-                        repository.Insert(user);
-                        repository.Save();
-                        MessageBox.Show("Ugurlu");
-                        //this.Close();
-                       
-                        this.Close();
-                    }
-                    else
-                    { MessageBox.Show("Bu istifadeci movcuddur"); }
-                }
-                else
+                if (string.IsNullOrEmpty(txb_Email.Text)
+               || string.IsNullOrEmpty(txb_Name.Text)
+               || string.IsNullOrEmpty(txb_Surname.Text)
+               || string.IsNullOrEmpty(txb_PhoneNumber.Text)
+               || string.IsNullOrEmpty(txb_Password.Text))
                 {
                     MessageBox.Show("Xanaları doldurun");
                 }
-                
+               
+                else
+                {
+                    bool check = false;
+                    if (!check)
+                    {
+                        if (!Regex.IsMatch(txb_PhoneNumber.Text, @"^([+994])+(50|55|51|77|70|99|10|60)+[0-9]{7}$"))
+                        {
+                            MessageBox.Show("Telefon nömrəsinin formatı +994XXXXXXXXX olmalıdır");
+                            check = false ;
+                        }
+                        else check = true;
+                        if (!Regex.IsMatch(txb_Email.Text, @"^[a-z0-9][-a-z0-9._]+@([-a-z0-9]+[.])+[a-z]{2,5}$"))
+                        {
+                            MessageBox.Show("Email formatı example@gmail.com şəklində olmalıdır");
+                            check = false;
+                        }
+                        else check = true;
+                        if (txb_Password.Text.Length < 8)
+                        {
+                            MessageBox.Show("Şifrə uzunluğu minimum 8 simvol olmalıdır");
+                            check = false;
+                        }
+                       else  check = true;
+                    }
+                    if (check)
+                    {
+                        if (!repository.IfAlreadyExist(user.Email, users))
+                        {
+                            repository.Insert(user);
+                            repository.Save();
+                            MessageBox.Show("Ugurlu");
+                            //this.Close();
 
-            }
+                            this.Close();
+                        }
+                        else
+                        { MessageBox.Show("Bu istifadeci movcuddur"); }
+
+                    }
+
+
+                }
+            } 
+               
+               
         }
 
         private void RegistrationForm_Load(object sender, EventArgs e)

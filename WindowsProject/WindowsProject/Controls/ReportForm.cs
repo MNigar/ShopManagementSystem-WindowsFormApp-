@@ -38,7 +38,7 @@ namespace WindowsProject
                     cmb_SearchDetail.Items.Add(category.Id + "." + category.Name);
                    
                 }
-                var userlist= _userRepository.GetAll().Where(u=>u.RoleId!=(int)Enums.Role.Admin);
+                var userlist = _userRepository.GetAll();
                 foreach (User user in userlist)
                 {
                     cmb_UserSearch.Items.Add(user.Id + "." + user.Name );
