@@ -535,7 +535,7 @@ namespace WindowsProject
                 }
                 else
                 {
-                    bool check = false;
+                    bool check = true;
                     if (product.ExpireDate.Day - DateTime.Now.Day == 3)
                     {
                         check = false;
@@ -551,7 +551,7 @@ namespace WindowsProject
                     {
                         check = false;
                       
-                        if (MessageBox.Show("Mehsulun vaxtinin bitmeyine 3 gun qalib eminsinizmi?", "Raziliq", MessageBoxButtons.YesNo) == DialogResult.No)
+                        if (MessageBox.Show("Mehsulun vaxtinin bitmeyine 2 gun qalib eminsinizmi?", "Raziliq", MessageBoxButtons.YesNo) == DialogResult.No)
                         {
                             check = false;
                             MessageBox.Show("Almadiniz");
@@ -562,7 +562,7 @@ namespace WindowsProject
                     {
                         check = false;
                       
-                        if (MessageBox.Show("Mehsulun vaxtinin bitmeyine 3 gun qalib eminsinizmi?", "Raziliq", MessageBoxButtons.YesNo) == DialogResult.No)
+                        if (MessageBox.Show("Mehsulun vaxtinin bitmeyine 1 gun qalib eminsinizmi?", "Raziliq", MessageBoxButtons.YesNo) == DialogResult.No)
                         {
                             check = false;
                             MessageBox.Show("Almadiniz");
@@ -595,7 +595,7 @@ namespace WindowsProject
                         _productRepository.Save();
 
                         _customerRepository.Save();
-                        MessageBox.Show("Teshekkurler ");
+                        MessageBox.Show($"Teshekkurler {product.Name} mehsulu aldiniz");
                         GetAllProduct();
                     }
                 }
