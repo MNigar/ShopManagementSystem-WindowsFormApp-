@@ -32,7 +32,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grb_Product = new System.Windows.Forms.GroupBox();
             this.lbl_Description = new System.Windows.Forms.Label();
             this.btn_ClearInput = new System.Windows.Forms.Button();
             this.rtb_Description = new System.Windows.Forms.RichTextBox();
@@ -76,7 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgw_ProductTable)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grb_Product.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,11 +95,12 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(537, 198);
+            this.textBox1.Location = new System.Drawing.Point(833, 179);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(201, 20);
             this.textBox1.TabIndex = 17;
+            this.textBox1.Visible = false;
             // 
             // tabControl1
             // 
@@ -114,7 +115,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.grb_Product);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage1.Name = "tabPage1";
@@ -124,32 +125,31 @@
             this.tabPage1.Text = "ForCrud";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // grb_Product
             // 
-            this.groupBox1.Controls.Add(this.dtp_Expire);
-            this.groupBox1.Controls.Add(this.lbl_Expire);
-            this.groupBox1.Controls.Add(this.txb_Datetime);
-            this.groupBox1.Controls.Add(this.lbl_Description);
-            this.groupBox1.Controls.Add(this.btn_ClearInput);
-            this.groupBox1.Controls.Add(this.rtb_Description);
-            this.groupBox1.Controls.Add(this.btnUpdate);
-            this.groupBox1.Controls.Add(this.lbl_UserId);
-            this.groupBox1.Controls.Add(this.btn_Delete);
-            this.groupBox1.Controls.Add(this.cmb_Category);
-            this.groupBox1.Controls.Add(this.lbl_PhoneNumber);
-            this.groupBox1.Controls.Add(this.txb_Count);
-            this.groupBox1.Controls.Add(this.lbl_Price);
-            this.groupBox1.Controls.Add(this.txb_Price);
-            this.groupBox1.Controls.Add(this.lbl_Category);
-            this.groupBox1.Controls.Add(this.btn_Insert);
-            this.groupBox1.Controls.Add(this.lblName);
-            this.groupBox1.Controls.Add(this.tbx_productName);
-            this.groupBox1.Location = new System.Drawing.Point(5, 14);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(890, 528);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.grb_Product.Controls.Add(this.dtp_Expire);
+            this.grb_Product.Controls.Add(this.lbl_Expire);
+            this.grb_Product.Controls.Add(this.lbl_Description);
+            this.grb_Product.Controls.Add(this.btn_ClearInput);
+            this.grb_Product.Controls.Add(this.rtb_Description);
+            this.grb_Product.Controls.Add(this.btnUpdate);
+            this.grb_Product.Controls.Add(this.lbl_UserId);
+            this.grb_Product.Controls.Add(this.btn_Delete);
+            this.grb_Product.Controls.Add(this.cmb_Category);
+            this.grb_Product.Controls.Add(this.lbl_PhoneNumber);
+            this.grb_Product.Controls.Add(this.txb_Count);
+            this.grb_Product.Controls.Add(this.lbl_Price);
+            this.grb_Product.Controls.Add(this.txb_Price);
+            this.grb_Product.Controls.Add(this.lbl_Category);
+            this.grb_Product.Controls.Add(this.btn_Insert);
+            this.grb_Product.Controls.Add(this.lblName);
+            this.grb_Product.Controls.Add(this.tbx_productName);
+            this.grb_Product.Location = new System.Drawing.Point(5, 14);
+            this.grb_Product.Name = "grb_Product";
+            this.grb_Product.Size = new System.Drawing.Size(890, 528);
+            this.grb_Product.TabIndex = 3;
+            this.grb_Product.TabStop = false;
+            this.grb_Product.Text = "Product";
             // 
             // lbl_Description
             // 
@@ -316,7 +316,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1002, 443);
+            this.tabPage2.Size = new System.Drawing.Size(999, 572);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Search";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -549,11 +549,12 @@
             // 
             // txb_Datetime
             // 
-            this.txb_Datetime.Location = new System.Drawing.Point(441, 236);
+            this.txb_Datetime.Location = new System.Drawing.Point(833, 179);
             this.txb_Datetime.Margin = new System.Windows.Forms.Padding(2);
             this.txb_Datetime.Name = "txb_Datetime";
             this.txb_Datetime.Size = new System.Drawing.Size(201, 20);
             this.txb_Datetime.TabIndex = 23;
+            this.txb_Datetime.Visible = false;
             // 
             // dtp_Expire
             // 
@@ -575,6 +576,7 @@
             this.ClientSize = new System.Drawing.Size(1349, 882);
             this.Controls.Add(this.lbl_cat);
             this.Controls.Add(this.lbl_Names);
+            this.Controls.Add(this.txb_Datetime);
             this.Controls.Add(this.btn_SearchUSers);
             this.Controls.Add(this.cmb_SearchByUserCategory);
             this.Controls.Add(this.txb_SearchNameByUSer);
@@ -582,8 +584,8 @@
             this.Controls.Add(this.cmb_SearchCategory);
             this.Controls.Add(this.txb_SearchName);
             this.Controls.Add(this.btn_Buy);
-            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.dgw_ProductTable);
             this.Name = "ProductForm";
             this.Text = "ProductForm";
@@ -592,8 +594,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgw_ProductTable)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grb_Product.ResumeLayout(false);
+            this.grb_Product.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
@@ -607,7 +609,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grb_Product;
         private System.Windows.Forms.Label lbl_UserId;
         private System.Windows.Forms.ComboBox cmb_Category;
         private System.Windows.Forms.Label lbl_PhoneNumber;

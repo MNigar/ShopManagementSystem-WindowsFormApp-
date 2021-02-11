@@ -293,7 +293,10 @@ namespace WindowsProject
                 int userid = Convert.ToInt32(lbl_UserId.Text);
                 var user = context.Users.Where(y => y.Id == userid).FirstOrDefault();
                 if (String.IsNullOrEmpty(tbx_productName.Text) || String.IsNullOrEmpty(txb_Count.Text)
-                    || String.IsNullOrEmpty(txb_Price.Text) || String.IsNullOrEmpty(cmb_Category.Text))
+                    || String.IsNullOrEmpty(txb_Price.Text) || String.IsNullOrEmpty(cmb_Category.Text)
+                    || cmb_Category.SelectedIndex==0)
+
+                    
                 {
                     MessageBox.Show("Xanalari doldurun");
                 }
@@ -536,8 +539,8 @@ namespace WindowsProject
                     if (product.ExpireDate.Day - DateTime.Now.Day == 3)
                     {
                         check = false;
-                   
-                        if (MessageBox.Show("Raziliq", "Mehsulun vaxtinin bitmeyine 3 gun qalib eminsinizmi?", MessageBoxButtons.YesNo) == DialogResult.No)
+                        
+                        if (MessageBox.Show("Mehsulun vaxtinin bitmeyine 3 gun qalib eminsinizmi?", "Raziliq", MessageBoxButtons.YesNo) == DialogResult.No)
                         {
                             check = false;
                             MessageBox.Show("Almadiniz");
@@ -548,7 +551,7 @@ namespace WindowsProject
                     {
                         check = false;
                       
-                        if (MessageBox.Show("Raziliq", "Mehsulun vaxtinin bitmeyine 3 gun qalib eminsinizmi?", MessageBoxButtons.YesNo) == DialogResult.No)
+                        if (MessageBox.Show("Mehsulun vaxtinin bitmeyine 3 gun qalib eminsinizmi?", "Raziliq", MessageBoxButtons.YesNo) == DialogResult.No)
                         {
                             check = false;
                             MessageBox.Show("Almadiniz");
@@ -559,7 +562,7 @@ namespace WindowsProject
                     {
                         check = false;
                       
-                        if (MessageBox.Show("Raziliq", "Mehsulun vaxtinin bitmeyine 3 gun qalib eminsinizmi?", MessageBoxButtons.YesNo) == DialogResult.No)
+                        if (MessageBox.Show("Mehsulun vaxtinin bitmeyine 3 gun qalib eminsinizmi?", "Raziliq", MessageBoxButtons.YesNo) == DialogResult.No)
                         {
                             check = false;
                             MessageBox.Show("Almadiniz");
@@ -592,7 +595,7 @@ namespace WindowsProject
                         _productRepository.Save();
 
                         _customerRepository.Save();
-
+                        MessageBox.Show("Teshekkurler ");
                         GetAllProduct();
                     }
                 }

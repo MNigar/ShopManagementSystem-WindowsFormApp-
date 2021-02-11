@@ -40,20 +40,22 @@ namespace WindowsProject
             // 
             // btn_Login
             // 
-            this.btn_Login.Location = new System.Drawing.Point(400, 197);
+            this.btn_Login.Location = new System.Drawing.Point(267, 128);
+            this.btn_Login.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Login.Name = "btn_Login";
-            this.btn_Login.Size = new System.Drawing.Size(102, 51);
+            this.btn_Login.Size = new System.Drawing.Size(68, 33);
             this.btn_Login.TabIndex = 21;
-            this.btn_Login.Text = "Daxil ol";
+            this.btn_Login.Text = "Daxil olun";
             this.btn_Login.UseMnemonic = false;
             this.btn_Login.UseVisualStyleBackColor = true;
             this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
             // btn_Registration
             // 
-            this.btn_Registration.Location = new System.Drawing.Point(374, 295);
+            this.btn_Registration.Location = new System.Drawing.Point(249, 192);
+            this.btn_Registration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Registration.Name = "btn_Registration";
-            this.btn_Registration.Size = new System.Drawing.Size(166, 51);
+            this.btn_Registration.Size = new System.Drawing.Size(111, 33);
             this.btn_Registration.TabIndex = 20;
             this.btn_Registration.Text = "Qeydiyyatdan keçin";
             this.btn_Registration.UseVisualStyleBackColor = false;
@@ -62,9 +64,10 @@ namespace WindowsProject
             // lbl_Email
             // 
             this.lbl_Email.AutoSize = true;
-            this.lbl_Email.Location = new System.Drawing.Point(194, 83);
+            this.lbl_Email.Location = new System.Drawing.Point(129, 54);
+            this.lbl_Email.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Email.Name = "lbl_Email";
-            this.lbl_Email.Size = new System.Drawing.Size(118, 20);
+            this.lbl_Email.Size = new System.Drawing.Size(81, 13);
             this.lbl_Email.TabIndex = 13;
             this.lbl_Email.Text = "Elektron Ünvan";
             this.lbl_Email.UseMnemonic = false;
@@ -72,42 +75,46 @@ namespace WindowsProject
             // lbl_Password
             // 
             this.lbl_Password.AutoSize = true;
-            this.lbl_Password.Location = new System.Drawing.Point(196, 145);
+            this.lbl_Password.Location = new System.Drawing.Point(131, 94);
+            this.lbl_Password.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Password.Name = "lbl_Password";
-            this.lbl_Password.Size = new System.Drawing.Size(42, 20);
+            this.lbl_Password.Size = new System.Drawing.Size(28, 13);
             this.lbl_Password.TabIndex = 15;
             this.lbl_Password.Text = "Şifrə";
             this.lbl_Password.UseMnemonic = false;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(60, 258);
+            this.textBox1.Location = new System.Drawing.Point(40, 168);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.MaxLength = 20;
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(240, 26);
+            this.textBox1.Size = new System.Drawing.Size(161, 20);
             this.textBox1.TabIndex = 22;
             this.textBox1.Visible = false;
             // 
             // txb_Email
             // 
-            this.txb_Email.Location = new System.Drawing.Point(390, 83);
+            this.txb_Email.Location = new System.Drawing.Point(260, 54);
+            this.txb_Email.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txb_Email.Name = "txb_Email";
-            this.txb_Email.Size = new System.Drawing.Size(212, 26);
+            this.txb_Email.Size = new System.Drawing.Size(143, 20);
             this.txb_Email.TabIndex = 23;
             // 
             // txb_Password
             // 
-            this.txb_Password.Location = new System.Drawing.Point(390, 145);
+            this.txb_Password.Location = new System.Drawing.Point(260, 94);
+            this.txb_Password.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txb_Password.Name = "txb_Password";
-            this.txb_Password.Size = new System.Drawing.Size(212, 26);
+            this.txb_Password.Size = new System.Drawing.Size(143, 20);
             this.txb_Password.TabIndex = 24;
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 561);
+            this.ClientSize = new System.Drawing.Size(638, 365);
             this.Controls.Add(this.txb_Password);
             this.Controls.Add(this.txb_Email);
             this.Controls.Add(this.textBox1);
@@ -115,8 +122,10 @@ namespace WindowsProject
             this.Controls.Add(this.btn_Registration);
             this.Controls.Add(this.lbl_Email);
             this.Controls.Add(this.lbl_Password);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

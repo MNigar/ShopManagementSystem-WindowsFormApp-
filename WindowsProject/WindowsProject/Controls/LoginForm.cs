@@ -33,8 +33,8 @@ namespace WindowsProject
         {
             //RegistrationForm reg = new RegistrationForm();
             //reg.ShowDialog();
-            RegistrationForm registration = new RegistrationForm(this);
 
+            RegistrationForm registration = new RegistrationForm(this);
             registration.ShowDialog();
             
             
@@ -91,6 +91,13 @@ namespace WindowsProject
                 }
             }
 
+        }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            this.Parent = null;
+            e.Cancel = true;
         }
     }
 }
